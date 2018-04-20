@@ -126,5 +126,38 @@ li b{
     height: auto;
 }
 
+.modal-display-event {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 260px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title title title title title'
+                         'left_side right_side right_side right_side right_side'
+                         '. . . . add_event';
+}
+
+.modal-event-add {
+    grid-area: add_event;
+    width: auto;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 20px;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    margin-top: -10px;
+    cursor: pointer;
+    background-color: #1d74e5;
+    color: white;
+}
 
 

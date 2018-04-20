@@ -16,6 +16,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
     addEvent("22", "career", "08:00 Career Fair");
     addEvent("32", "career", "10:00 Campus Interviews");
 
+    Util.all(".valid-event").forEach(function(event) {
+        event.addEventListener("click", function(e){
+            e.preventDefault()
+            e.stopPropagation()
+            displayEvent(event, document)
+        })
+    })
+
+    window.addEventListener("click", function(e){
+        if (e.target == Util.one("#modal")) {
+            e.preventDefault()
+            e.stopPropagation()
+            Util.one("#modal").style.display = "none";
+        }
+    })
 
 });
 
@@ -97,6 +112,7 @@ function addHoliday(holiday, day_block_id) {
  */
 function addEvent(day_block_id, type, description) {
     var event_slot = document.createElement('ul');
+    event_slot.classList.add("valid-event")
     event_slot.setAttribute("id", type);
     event_slot.style.gridRow = 2; //Changes depending on # of holidays and events on day-block
     var event_list = document.createElement('li');
@@ -107,5 +123,28 @@ function addEvent(day_block_id, type, description) {
     document.getElementById(day_block_id).appendChild(event_slot);   
 }
 
+
+function displayEvent(event, current_document) {
+    var modal = Util.one("#modal")
+    modal.style.display = "block";
+
+    modal.innerHTML = ""
+
+    var modal_display = current_document.createElement('div')
+
+    modal_display.classList.add("modal-display-event")
+
+    modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">Right side</div><div class="modal-event-add">Add +</div>'
+
+    modal.appendChild(modal_display)
+
+    Util.one(".modal-event-add").addEventListener("click", function(e){
+        e.preventDefault()
+        e.stopPropagation()
+        Util.one("#modal").style.display = "none";
+    })
+
+    console.log("displaying event")
+}
 
 

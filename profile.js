@@ -8,7 +8,6 @@ Util.events(document, {
 
 		window.addEventListener("click", function(e){
 			if (e.target == Util.one("#modal")) {
-				console.log("here2")
 				e.preventDefault()
 				e.stopPropagation()
 				Util.one("#modal").style.display = "none";
