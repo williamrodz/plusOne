@@ -5,6 +5,7 @@ var class_blocks = ["14", "16", "24", "26", "34", "36", "44", "46"];
 document.addEventListener("DOMContentLoaded", function(event) {
     createCalendarDateBlock();
     addMonthToBlock();
+    createWeekDaysLabels();
     addHoliday("Easter", "11");
     addHoliday("Cinco de Mayo", "57");
     for (i=0; i<class_blocks.length; i++) {
@@ -18,12 +19,21 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 });
 
+function createWeekDaysLabels() {
+    var week_days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    for (var i=0; i<7; i++) {
+        var week_day_space = document.createElement('div');
+        week_day_space.style.gridColumn = i+1;
+        week_day_space.innerHTML = week_days[i];
+        document.getElementsByClassName("calendar-header")[0].appendChild(week_day_space);
+    }
+}
+
 /**
  * Fills calendar grid with divs representing day blocks for April 2018.
  * Hard coded
  */
 function createCalendarDateBlock() {
-    console.log("here");
     var blocks_panel = document.getElementsByClassName("calendar-dates")[0];
     var row_counter = 1;
     var col_counter = 1;
