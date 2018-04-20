@@ -233,9 +233,6 @@ body {
     height: 20px;
     text-align: center;
     vertical-align: middle;
-    border: solid;
-    border-color: #b8b9bc;
-    border-width: 3px;
     line-height: 20px;
     font-size: 20px;
     padding: 10px;
@@ -243,6 +240,8 @@ body {
     border-radius: 10px;
     margin-top: -10px;
     cursor: pointer;
+    background-color: #1d74e5;
+    color: white;
 
 }
 
