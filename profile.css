@@ -39,47 +39,47 @@ li a.active {
 
 #profile-page {
     display: grid;
-    grid-template-areas: 'welcome . edit'
+    grid-template-areas: 'title_container title_container title_container'
                          'connect events messages';
 }
 
-#welcome {
-    grid-area: welcome;
-    background-color: white;
-    height: 50px;
-    text-align: left;
-    vertical-align: middle;
-    line-height: 50px;
-    padding-left: 50px;
-    border-style: solid;
+#title-container {
+    display: grid;
+    grid-area: title_container;
+    grid-template-areas: '. title edit';
+    border: solid;
     border-width: 1px;
-    border-left: hidden;
-    border-right: hidden;
-    border-top: hidden;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    margin: 15px 40px 0px 40px;
+    background-color: white;
+    width: 1201px;
+    height: 60px;
 }
 
 #filler {
     grid-area: .;
-    background-color: white;
-    border-style: solid;
-    border-width: 1px;
-    border-left: hidden;
-    border-right: hidden;
-    border-top: hidden;
+    width: 143px;
+    
+}
+
+#title {
+    grid-area: title;
+    height: 50px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    width: 153px;
+    font-size: 30px;
 }
 
 #edit-info {
     grid-area: edit;
-    background-color: white;
     text-align: right;
     vertical-align: middle;
-    line-height: 50px;
+    line-height: 60px;
     padding-right: 50px;
-    border-style: solid;
-    border-width: 1px;
-    border-left: hidden;
-    border-right: hidden;
-    border-top: hidden;
 }
 
 
@@ -91,6 +91,7 @@ li a.active {
     border-radius: 10px;
     margin: 20px 10px 20px 40px;
     background-color: white;
+    width: 385px;
 }
 
 #my-events {
@@ -101,6 +102,7 @@ li a.active {
     border-radius: 10px;
     margin: 20px 10px 20px 10px;
     background-color: white;
+    width: 385px;
 }
 
 #my-messages {
@@ -111,6 +113,7 @@ li a.active {
     border-radius: 10px;
     margin: 20px 40px 20px 10px;
     background-color: white;
+    width: 385px;
 }
 
 .display-title {
@@ -123,7 +126,7 @@ li a.active {
     background-color: white;
     margin: 30px;
     overflow-y: auto;
-    height: 350px;
+    height: 300px;
 
 
 }
@@ -134,6 +137,7 @@ li a.active {
     border-color: black;
     border-width: 1px;
     height: 80px;
+    cursor: pointer;
 }
 
 .display-icon {
@@ -158,5 +162,95 @@ li a.active {
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 10;
+}
+
+.modal-display-message {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 200px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title'
+                         'message';
+}
+
+.modal-display-connection {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 200px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title title title title title'
+                         'left_side right_side right_side right_side right_side';
+}
+
+
+.modal-display-event {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 200px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title title title title title'
+                         'left_side right_side right_side right_side right_side';
+}
+
+.modal-title {
+    grid-area: title;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 50px;
+    height: 50px;
+    font-size: 30px;
+    padding-left: 30px;
+    border-size: 1px;
+    border-bottom: solid;
+    border-color: black;
+}
+
+.modal-left-side {
+    grid-area: left_side;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0px 0;
+    width: 125px;
+    height:125px;
+    border-size: 1px;
+    border-right: solid;
+    border-color: black;
+
+}
+
+.modal-right-side {
+    grid-area: right_side;
+    padding-left: 20px;
+    margin: 10px -60px;
+    width: 100%;
+    height:125px;
+}
+
+.modal-message {
+    grid-area: message;
+    margin-top: -70px;
+    padding-left: 20px;
+    padding-top: 10px;
 }
 

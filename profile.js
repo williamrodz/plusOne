@@ -15,7 +15,7 @@ Util.events(document, {
 			message.addEventListener("click", function(e){
 				e.preventDefault()
 				e.stopPropagation()
-				displayMessage(message)
+				displayMessage(message, document)
 			})
 		})
 
@@ -23,7 +23,7 @@ Util.events(document, {
 			event.addEventListener("click", function(e){
 				e.preventDefault()
 				e.stopPropagation()
-				displayEvent(event)
+				displayEvent(event, document)
 			})
 		})
 
@@ -31,25 +31,58 @@ Util.events(document, {
 			connection.addEventListener("click", function(e){
 				e.preventDefault()
 				e.stopPropagation()
-				displayConnection(connection)
+				displayConnection(connection, document)
 			})
 		})
 	}
 })
 
+// TODO: clear modal
+function displayMessage(message, current_document) {
+	var modal = Util.one("#modal")
+	modal.style.display = "block";
 
-function displayMessage(message) {
-	Util.one("#modal").style.display = "block";
+	modal.innerHTML = ""
+
+	var modal_display = current_document.createElement('div')
+
+	modal_display.classList.add("modal-display-message")
+
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><div class="modal-message">Message from Alicia Smith!!!!!!!!</div>'
+
+	modal.appendChild(modal_display)
 	console.log("displaying message")
 }
 
-function displayConnection(connection) {
-	Util.one("#modal").style.display = "block";
+function displayConnection(connection, current_document) {
+	var modal = Util.one("#modal")
+	modal.style.display = "block";
+
+	modal.innerHTML = ""
+
+	var modal_display = current_document.createElement('div')
+
+	modal_display.classList.add("modal-display-connection")
+
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Right side</div>'
+
+	modal.appendChild(modal_display)
 	console.log("displaying connection")
 }
 
-function displayEvent(event) {
-	Util.one("#modal").style.display = "block";
+function displayEvent(event, current_document) {
+	var modal = Util.one("#modal")
+	modal.style.display = "block";
+
+	modal.innerHTML = ""
+
+	var modal_display = current_document.createElement('div')
+
+	modal_display.classList.add("modal-display-event")
+
+	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">Right side</div>'
+
+	modal.appendChild(modal_display)
 	console.log("displaying event")
 }
 
