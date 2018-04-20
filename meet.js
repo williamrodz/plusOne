@@ -309,6 +309,7 @@ function addListOfPeople(list) {
         let addButton = document.createElement("button");
         addButton.classList.add("add-friend");
         addButton.innerHTML = "+";
+        addButton.title = "Add this person to my connections";
 
         addButton.addEventListener("click", (e) => {
             displayMessage("Add person", "Would you like to connect with?", document);

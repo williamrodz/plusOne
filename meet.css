@@ -21,9 +21,10 @@ body {
     padding-bottom: 5px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    
     flex-flow: column;
     min-width: 170px;
+    background-color: whitesmoke;
 }
 
 .clear-all-filters {
@@ -219,6 +220,8 @@ body {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 10;
+    font-family: Helvetica, Georgia, 'Times New Roman';
+    
 }
 
 .modal-display-message-meet {
