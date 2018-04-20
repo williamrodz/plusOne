@@ -54,7 +54,7 @@ function displayMessage(message, current_document) {
 
 	modal_display.classList.add("modal-display-message")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><div class="modal-message">Message from Alicia Smith!!!!!!!!</div>'
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><div class="modal-message">Hi how\'s it going? Just wanted to meet up for coffee before class</div>'
 
 	modal.appendChild(modal_display)
 }
