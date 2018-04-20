@@ -5,7 +5,7 @@
 html {
     display: flex;
     min-height: 100vh;
-    background-color: rgb(68, 122, 192); 
+    background-color: #EAEBEF; 
 }
 
 body{
@@ -58,20 +58,20 @@ li b{
     display: grid;
     grid-template-columns: 1fr 6fr;
     grid-template-rows: 1fr;
-    width: 100%;
-    height: 100%;
+    width: 90%;
+    height: 90%;
     border: solid;
     border-width: 1px;
     border-color: #b8b9bc;
     border-radius: 10px;
     background-color: white;
-    
+    margin: auto; 
+    background-color: var(--color-calendar-page-background);
 }
 
 .left-column {
     grid-column: 1;
     grid-row: 1;
-    background-color: var(--color-calendar-page-background);
     border-right: 1px solid slategray;
     width: auto;
     height: auto;
@@ -80,22 +80,21 @@ li b{
 .right-column {
     grid-column: 2;
     grid-row: 1;
-    background-color: var(--color-calendar-page-background);
     width: auto;
     height: auto;
 }
 
 .calendar-panel {
     display: grid;
-    grid-template-rows: 1fr 8fr;
+    grid-template-rows: 1fr auto;
     width: auto;
     height: auto;
 }
 
-.calndar-header {
+.calendar-header {
     grid-row: 1;
     width: auto;
-    height: auto;
+    height: 125px;
 }
 
 .calendar-dates {
