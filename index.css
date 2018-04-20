@@ -1,36 +1,46 @@
-ul {
-    list-style-type: none;
+body{
     margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    border-radius: 25px;
-    background-color: #f3f3f3;
+    background-color: #EAEBEF;
+    font-family: 'Helvetica', 'Georgia', 'Times New Roman';
 }
 
-li {
-    float: left;
+
+.menu{
+    width: 100%;
+    height: 71px;     
+    display: flex;
+    flex-direction: row;
+    background-color: #EAEBEF;    
+
 }
 
-li a {
-    display: block;
-    color: #666;
+a{
+    text-decoration:none;
+}
+.menuItem{
+    width: 100%;
     text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    border: 1px solid #bbb;
+
+    display: block;
+    color: black;
+    padding: 25px 0px;
+    font-size: 18px;     
 }
 
-li a:hover:not(.active) {
-    background-color: #ADD8E6;
+.menuItem:hover {
+    color: white;
+    background-color: #73a9ef;
 }
+
 
 .iconBox{
     color: white;
     background-color: #ADD8E6;
 }
 
-#icon{
-    width: 20px;
+.icon{
+    width: 40px ;
 }
 
 #splashScreenIcon{
@@ -39,11 +49,7 @@ li a:hover:not(.active) {
 
 }
 
-body{
-    font-family: arial;
-    font-size: 13pt;
-    background-color: #87AFC7;
-}
+
 
 .splashScreenContents{
     display: flex;
@@ -53,13 +59,13 @@ body{
 
 .splashScreenText{
     font-size: 30px;
-    color: white;
+    color: black;
     font-kerning: normal;
 }
 
 .aboutText{
     position: absolute;
-    bottom: 0;
+    bottom: 10px;
 }
 
 .logInSignUpButtons{
@@ -70,3 +76,10 @@ body{
     width: 200px;
     height: 70px;
 }
+
+.logInSignUpButtons:hover{
+    background-color: white;
+    color: #1d74e5;
+}
+
+.logInSignUpButtons.
