@@ -5,151 +5,151 @@ PS2 - CandyCrush UI
 <html>
 
 <head>
-<meta charset="utf-8">
-<title>plusOne</title>
+	<meta charset="utf-8">
+	<title>plusOne</title>
 
-<!-- Use mobile-aware viewport -->
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Use mobile-aware viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- Load style sheets -->
-<link rel="stylesheet" href="profile.css">
+	<!-- Load style sheets -->
+	<link rel="stylesheet" href="profile.css">
+	<link rel="stylesheet" href="index.css">
 
-<script src="util.js"></script>
-<script src="profile.js"></script>
+
+	<script src="util.js"></script>
+	<script src="profile.js"></script>
 
 </head>
 
 <body>
 
-<div id="menu">
-<ul>
-  <li><a href="#home">Logo</a></li>
-  <li><a href="#connect">Connect</a></li>
-  <li><a href="#events">Events</a></li>
-  <li><a href="#forum">Forum</a></li>
-  <li><a class="active" href="#profile">My Profile</a></li>
-</ul>
-</div>
-<div id="profile-page">
-	<div id = "title-container">
-		<div id="filler">
+	<div class="menu">
+		<a href="index.html" class="menuItem"><div ><img class="icon" src="logo.png" /></div></a>
+		<a href="#connect" class="menuItem"><div>Connect</div></a>
+		<a href="calendar.html" class="menuItem"><div >Events</div></a>
+		<a href="#forum" class="menuItem"><div >Forum</div></a>
+		<a class="menuItem currentMenuItem" href="profile.html"><div>Profile</div></a>
+	</div>
+	<div id="profile-page">
+		<div id = "title-container">
+			<div id="filler">
+			</div>
+
+			<div id="title">
+				My Profile
+			</div>
+
+			<div id="edit-info">
+				Edit your info
+			</div>
 		</div>
 
-		<div id="title">
-		My Profile
+		<div id="my-connections">
+			<div class="display-title"> 
+				<img class="display-icon" src="connection.png"/> My Connections
+			</div>
+			<div class="vertical-display">
+				<div class="my-item my-connection">
+					<img class="my-connection-image" src="placeholder_connection.png"/>
+					<div class="my-connection-information">Alicia Smith</div>
+				</div>
+				<div class="my-item my-connection">
+					<img class="my-connection-image" src="placeholder_connection.png"/>
+					<div class="my-connection-information">John Doe</div>
+				</div>
+				<div class="my-item my-connection">
+					<img class="my-connection-image" src="placeholder_connection.png"/>
+					<div class="my-connection-information">Some Name</div>
+				</div>
+				<div class="my-item my-connection">
+					<img class="my-connection-image" src="placeholder_connection.png"/>
+					<div class="my-connection-information">Some Name</div>
+				</div>
+			</div>
 		</div>
 
-		<div id="edit-info">
-		Edit your info
+		<div id="my-events">
+			<div class="display-title"> 
+				<img class="display-icon" src="calendar.png"/> My Events
+			</div>
+			<div class="vertical-display">
+				<div class="my-item my-event">
+					<img class="my-event-image" src="event.png"/>
+					<div class="my-event-information">English Classes</div>
+				</div>
+				<div class="my-item my-event">
+					<img class="my-event-image" src="event.png"/>
+					<div class="my-event-information">English Classes</div>
+				</div>
+				<div class="my-item my-event">
+					<img class="my-event-image" src="event.png"/>
+					<div class="my-event-information">English Classes</div>
+				</div>
+			</div>
 		</div>
+
+		<div id="my-messages">
+
+			<div class="display-title"> 
+				<img class="display-message" src="message.png"/> My Messages
+			</div>
+			<div class="vertical-display">
+				<div class="my-item my-message">
+					<div class="my-message-title">
+						Alicia Smith
+					</div>
+					<div class="my-message-content">
+						Message from Alicia Smith!!!!!!!!
+					</div>
+				</div>
+				<div class="my-item my-message">
+					<div class="my-message-title">
+						Alicia Smith
+					</div>
+					<div class="my-message-content">
+						Message from Alicia Smith!!!!!!!!
+					</div>
+				</div>
+				<div class="my-item my-message">
+					<div class="my-message-title">
+						Alicia Smith
+					</div>
+					<div class="my-message-content">
+						Message from Alicia Smith!!!!!!!!
+					</div>
+				</div>
+				<div class="my-item my-message">
+					<div class="my-message-title">
+						Alicia Smith
+					</div>
+					<div class="my-message-content">
+						Message from Alicia Smith!!!!!!!!
+					</div>
+				</div>
+				<div class="my-item my-message">
+					<div class="my-message-title">
+						Alicia Smith
+					</div>
+					<div class="my-message-content">
+						Message from Alicia Smith!!!!!!!!
+					</div>
+				</div>
+				<div class="my-item my-message">
+					<div class="my-message-title">
+						Alicia Smith
+					</div>
+					<div class="my-message-content">
+						Message from Alicia Smith!!!!!!!!
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
-<div id="my-connections">
-	<div class="display-title"> 
-		<img class="display-icon" src="connection.png"/> My Connections
-	</div>
-	<div class="vertical-display">
-	  <div class="my-item my-connection">
-	  	<img class="my-connection-image" src="placeholder_connection.png"/>
-	  	<div class="my-connection-information">Alicia Smith</div>
-	  </div>
-	  <div class="my-item my-connection">
-	  	<img class="my-connection-image" src="placeholder_connection.png"/>
-	  	<div class="my-connection-information">John Doe</div>
-	  </div>
-	  <div class="my-item my-connection">
-	  	<img class="my-connection-image" src="placeholder_connection.png"/>
-	  	<div class="my-connection-information">Some Name</div>
-	  </div>
-	  <div class="my-item my-connection">
-	  	<img class="my-connection-image" src="placeholder_connection.png"/>
-	  	<div class="my-connection-information">Some Name</div>
-	  </div>
-	</div>
-</div>
+	<div id="modal">
 
-<div id="my-events">
-	<div class="display-title"> 
-		<img class="display-icon" src="calendar.png"/> My Events
 	</div>
-	<div class="vertical-display">
-	  <div class="my-item my-event">
-	  	<img class="my-event-image" src="event.png"/>
-	  	<div class="my-event-information">English Classes</div>
-	  </div>
-	  <div class="my-item my-event">
-	  	<img class="my-event-image" src="event.png"/>
-	  	<div class="my-event-information">English Classes</div>
-	  </div>
-	  <div class="my-item my-event">
-	  	<img class="my-event-image" src="event.png"/>
-	  	<div class="my-event-information">English Classes</div>
-	  </div>
-	</div>
-</div>
-
-<div id="my-messages">
-
-	<div class="display-title"> 
-		<img class="display-message" src="message.png"/> My Messages
-	</div>
-	<div class="vertical-display">
-	  <div class="my-item my-message">
-	  	<div class="my-message-title">
-	  		Alicia Smith
-	  	</div>
-	  	<div class="my-message-content">
-	  		Message from Alicia Smith!!!!!!!!
-	  	</div>
-	  </div>
-	  <div class="my-item my-message">
-	  	<div class="my-message-title">
-	  		Alicia Smith
-	  	</div>
-	  	<div class="my-message-content">
-	  		Message from Alicia Smith!!!!!!!!
-	  	</div>
-	  </div>
-	  <div class="my-item my-message">
-	  	<div class="my-message-title">
-	  		Alicia Smith
-	  	</div>
-	  	<div class="my-message-content">
-	  		Message from Alicia Smith!!!!!!!!
-	  	</div>
-	  </div>
-	  <div class="my-item my-message">
-	  	<div class="my-message-title">
-	  		Alicia Smith
-	  	</div>
-	  	<div class="my-message-content">
-	  		Message from Alicia Smith!!!!!!!!
-	  	</div>
-	  </div>
-	  <div class="my-item my-message">
-	  	<div class="my-message-title">
-	  		Alicia Smith
-	  	</div>
-	  	<div class="my-message-content">
-	  		Message from Alicia Smith!!!!!!!!
-	  	</div>
-	  </div>
-	  <div class="my-item my-message">
-	  	<div class="my-message-title">
-	  		Alicia Smith
-	  	</div>
-	  	<div class="my-message-content">
-	  		Message from Alicia Smith!!!!!!!!
-	  	</div>
-	  </div>
-	</div>
-</div>
-
-</div>
-
-<div id="modal">
-
-</div>
 </body>
 
 </html>
