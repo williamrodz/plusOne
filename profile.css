@@ -162,6 +162,9 @@ li a.active {
     bottom: 0;
     background-color: rgba(0,0,0,0.5);
     z-index: 10;
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
 }
 
 .modal-display-message {
@@ -211,6 +214,15 @@ li a.active {
     overflow-y: auto;
     grid-template-areas: 'title title title title title'
                          'left_side right_side right_side right_side right_side';
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    }
+  to {
+    opacity: 1;
+    }
 }
 
 .modal-title {
