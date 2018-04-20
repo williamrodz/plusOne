@@ -1,3 +1,6 @@
+var eventBeingDisplayed = null;
+var connectionBeingDisplayed = null;
+
 Util.events(document, {
 	// Final initalization entry point: the Javascript code inside this block
 	// runs at the end of start-up when the DOM is ready
@@ -5,9 +8,12 @@ Util.events(document, {
 
 		window.addEventListener("click", function(e){
 			if (e.target == Util.one("#modal")) {
+				console.log("here2")
 				e.preventDefault()
 				e.stopPropagation()
 				Util.one("#modal").style.display = "none";
+				eventBeingDisplayed = null;
+				connectionBeingDisplayed = null;
 			}
 		})
 
@@ -23,6 +29,7 @@ Util.events(document, {
 			event.addEventListener("click", function(e){
 				e.preventDefault()
 				e.stopPropagation()
+				eventBeingDisplayed = event;
 				displayEvent(event, document)
 			})
 		})
@@ -80,9 +87,25 @@ function displayEvent(event, current_document) {
 
 	modal_display.classList.add("modal-display-event")
 
-	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">Right side</div>'
+	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">Right side</div><div class="modal-event-remove">Remove</div>'
 
 	modal.appendChild(modal_display)
+
+	Util.one(".modal-event-remove").addEventListener("click", function(e){
+		e.preventDefault()
+		e.stopPropagation()
+		console.log("here")
+		removeEvent(event)
+		Util.one("#modal").style.display = "none";
+		eventBeingDisplayed = null;
+		connectionBeingDisplayed = null;
+	})
 	console.log("displaying event")
+}
+
+function removeEvent(event) {
+	var events = Util.one("#my-events");
+	events.children[1].removeChild(event)
+	//events.removeChild(eventBeingDisplayed)
 }
 
