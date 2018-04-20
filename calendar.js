@@ -38,7 +38,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
  * Hard coded
  */
 function createCalendarDateBlock() {
-    console.log("here");
     var blocks_panel = document.getElementsByClassName("calendar-dates")[0];
     var row_counter = 1;
     var col_counter = 1;
@@ -133,8 +132,6 @@ function displayEvent(event, current_document) {
         e.stopPropagation()
         Util.one("#modal").style.display = "none";
     })
-
-    console.log("displaying event")
 }
 
 
