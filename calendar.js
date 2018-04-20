@@ -5,6 +5,7 @@ var class_blocks = ["14", "16", "24", "26", "34", "36", "44", "46"];
 document.addEventListener("DOMContentLoaded", function(event) {
     createCalendarDateBlock();
     addMonthToBlock();
+    createWeekDaysLabels();
     addHoliday("Easter", "11");
     addHoliday("Cinco de Mayo", "57");
     for (i=0; i<class_blocks.length; i++) {
@@ -15,15 +16,39 @@ document.addEventListener("DOMContentLoaded", function(event) {
     addEvent("22", "career", "08:00 Career Fair");
     addEvent("32", "career", "10:00 Campus Interviews");
 
+    Util.all(".valid-event").forEach(function(event) {
+        event.addEventListener("click", function(e){
+            e.preventDefault()
+            e.stopPropagation()
+            displayEvent(event, document)
+        })
+    })
+
+    window.addEventListener("click", function(e){
+        if (e.target == Util.one("#modal")) {
+            e.preventDefault()
+            e.stopPropagation()
+            Util.one("#modal").style.display = "none";
+        }
+    })
 
 });
+
+function createWeekDaysLabels() {
+    var week_days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    for (var i=0; i<7; i++) {
+        var week_day_space = document.createElement('div');
+        week_day_space.style.gridColumn = i+1;
+        week_day_space.innerHTML = week_days[i];
+        document.getElementsByClassName("calendar-header")[0].appendChild(week_day_space);
+    }
+}
 
 /**
  * Fills calendar grid with divs representing day blocks for April 2018.
  * Hard coded
  */
 function createCalendarDateBlock() {
-    console.log("here");
     var blocks_panel = document.getElementsByClassName("calendar-dates")[0];
     var row_counter = 1;
     var col_counter = 1;
@@ -61,8 +86,8 @@ function createDateDiv(row, col) {
  * Hard coded
  */
 function addMonthToBlock() {
-    document.getElementById("11").innerHTML = "April &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1";
-    document.getElementById("53").innerHTML = "May &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1";
+    document.getElementById("11").innerHTML = "April &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1";
+    document.getElementById("53").innerHTML = "May &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1";
 }
 
 /**
@@ -87,6 +112,7 @@ function addHoliday(holiday, day_block_id) {
  */
 function addEvent(day_block_id, type, description) {
     var event_slot = document.createElement('ul');
+    event_slot.classList.add("valid-event")
     event_slot.setAttribute("id", type);
     event_slot.style.gridRow = 2; //Changes depending on # of holidays and events on day-block
     var event_list = document.createElement('li');
@@ -97,5 +123,26 @@ function addEvent(day_block_id, type, description) {
     document.getElementById(day_block_id).appendChild(event_slot);   
 }
 
+
+function displayEvent(event, current_document) {
+    var modal = Util.one("#modal")
+    modal.style.display = "block";
+
+    modal.innerHTML = ""
+
+    var modal_display = current_document.createElement('div')
+
+    modal_display.classList.add("modal-display-event")
+
+    modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">Right side</div><div class="modal-event-add">Add +</div>'
+
+    modal.appendChild(modal_display)
+
+    Util.one(".modal-event-add").addEventListener("click", function(e){
+        e.preventDefault()
+        e.stopPropagation()
+        Util.one("#modal").style.display = "none";
+    })
+}
 
 

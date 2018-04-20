@@ -8,7 +8,6 @@ Util.events(document, {
 
 		window.addEventListener("click", function(e){
 			if (e.target == Util.one("#modal")) {
-				console.log("here2")
 				e.preventDefault()
 				e.stopPropagation()
 				Util.one("#modal").style.display = "none";
@@ -58,7 +57,6 @@ function displayMessage(message, current_document) {
 	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><div class="modal-message">Message from Alicia Smith!!!!!!!!</div>'
 
 	modal.appendChild(modal_display)
-	console.log("displaying message")
 }
 
 function displayConnection(connection, current_document) {
@@ -74,7 +72,6 @@ function displayConnection(connection, current_document) {
 	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Right side</div>'
 
 	modal.appendChild(modal_display)
-	console.log("displaying connection")
 }
 
 function displayEvent(event, current_document) {
@@ -94,18 +91,15 @@ function displayEvent(event, current_document) {
 	Util.one(".modal-event-remove").addEventListener("click", function(e){
 		e.preventDefault()
 		e.stopPropagation()
-		console.log("here")
 		removeEvent(event)
 		Util.one("#modal").style.display = "none";
 		eventBeingDisplayed = null;
 		connectionBeingDisplayed = null;
 	})
-	console.log("displaying event")
 }
 
 function removeEvent(event) {
 	var events = Util.one("#my-events");
 	events.children[1].removeChild(event)
-	//events.removeChild(eventBeingDisplayed)
 }
 

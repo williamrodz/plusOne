@@ -5,13 +5,14 @@
 html {
     display: flex;
     min-height: 100vh;
-    background-color: rgb(68, 122, 192); 
+    background-color: #EAEBEF; 
 }
 
 body{
     width: 100vw;
     height: 100vh;
     margin: 0;
+    font-family: 'Helvetica', 'Georgia', 'Times New Roman';
 }
 
 #menu {   
@@ -64,27 +65,38 @@ li b{
 .left-column {
     grid-column: 1;
     grid-row: 1;
-    display: grid;
-    background-color: var(--color-calendar-page-background);
-    border-right: 1px solid slategray;
-
+    width: auto;
+    height: auto;
 }
 
 .right-column {
     grid-column: 2;
     grid-row: 1;
-    background-color: var(--color-calendar-page-background);
+    width: auto;
+    height: auto;
 }
 
 .calendar-panel {
     display: grid;
-    grid-template-rows: 1fr 8fr;
-    width: 100%;
-    height: 100%;
+    grid-template-rows: 1fr auto;
+    width: auto;
+    height: auto;
 }
 
-.calndar-header {
+.calendar-header {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
     grid-row: 1;
+    width: 100%;
+    height: 125px;
+    margin: auto;
+}
+
+.days-of-week {
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    margin: auto;
 }
 
 .calendar-dates {
@@ -92,19 +104,60 @@ li b{
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     grid-template-rows: repeat(5, 1fr);
+    width: auto;
+    height: auto;
 }
 
 .day-block {
     display: grid;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     border: 1px solid slategray;
     text-align: right;
+    width: auto;
+    height: auto;
+    max-height: 130px; 
 }
 
 .holiday {
     background: rgb(152, 225, 235);
     border-radius: 4px;
     text-align: left;
+    width: auto;
+    height: auto;
+}
+
+.modal-display-event {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 260px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title title title title title'
+                         'left_side right_side right_side right_side right_side'
+                         '. . . . add_event';
+}
+
+.modal-event-add {
+    grid-area: add_event;
+    width: auto;
+    height: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 20px;
+    font-size: 20px;
+    padding: 10px;
+    margin-right: 10px;
+    border-radius: 10px;
+    margin-top: -10px;
+    cursor: pointer;
+    background-color: #1d74e5;
+    color: white;
 }
 
 
