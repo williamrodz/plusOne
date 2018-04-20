@@ -392,7 +392,11 @@ function displayMessage(title, message, current_document) {
     modalDisplay.classList.add("modal-display-message-meet");
 
     modalDisplay.innerHTML = '<div class="modal-title-meet">' + title + '</div><div class="modal-message-meet">' + message + '</div>' +
-    '<div class="message-optional"> <textarea rows="4" cols="50">Message (Optional)</textarea> </div>';
+        '<div class="message-optional"> <textarea class="textarea-message" rows="4" cols="50">Message (Optional)</textarea> </div>' +
+        '<div class="message-buttons-container">' +
+        '<button class="message-buttons-format">Send Request</button>' +
+        '<button class="message-buttons-format">Go Back</button>' +
+        '</div>';
 
     modal.appendChild(modalDisplay)
 
