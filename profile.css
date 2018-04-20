@@ -1,0 +1,339 @@
+body {
+    margin: 0;
+    background-color: #EAEBEF;
+    font-family: 'Helvetica', 'Georgia', 'Times New Roman';
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #b8b9bc;
+    background-color: #EAEBEF;
+}
+
+li {
+    float: left;
+    border-right:1px solid #bbb;
+    width: 19.9%;
+}
+
+li a {
+    display: block;
+    color: black;
+    text-align: center;
+    padding: 25px 0px;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+li a:hover:not(.active) {
+    background-color: #73a9ef;
+}
+
+li a.active {
+    color: white;
+    background-color: #1d74e5;
+}
+
+#profile-page {
+    display: grid;
+    grid-template-areas: 'title_container title_container title_container'
+                         'connect events messages';
+}
+
+#title-container {
+    display: grid;
+    grid-area: title_container;
+    grid-template-areas: '. title edit';
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    margin: 15px 40px 0px 40px;
+    background-color: white;
+    width: 1201px;
+    height: 60px;
+}
+
+#filler {
+    grid-area: .;
+    width: 143px;
+    
+}
+
+#title {
+    grid-area: title;
+    height: 50px;
+    margin: auto;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 50px;
+    width: 153px;
+    font-size: 30px;
+}
+
+#edit-info {
+    grid-area: edit;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 60px;
+    padding-right: 50px;
+}
+
+
+#my-connections {
+    grid-area: connect;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    margin: 20px 10px 20px 40px;
+    background-color: white;
+    width: 385px;
+}
+
+#my-events {
+    grid-area: events;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    margin: 20px 10px 20px 10px;
+    background-color: white;
+    width: 385px;
+}
+
+#my-messages {
+    grid-area: messages;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    margin: 20px 40px 20px 10px;
+    background-color: white;
+    width: 385px;
+}
+
+.display-title {
+    margin: 30px;
+    font-size: 30px;
+    text-align: center;
+}
+
+.vertical-display {
+    background-color: white;
+    margin: 30px;
+    overflow-y: auto;
+    height: 300px;
+
+
+}
+
+.my-item {
+    display: block;
+    border: solid;
+    border-color: black;
+    border-width: 1px;
+    height: 80px;
+    cursor: pointer;
+}
+
+.display-icon {
+    width: 25px;
+    height: 25px;
+}
+
+.display-message {
+    width: 32px;
+    height: 25px;
+}
+
+
+#modal {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    animation-name: fadeIn;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+}
+
+.modal-display-message {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 200px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title'
+                         'message';
+}
+
+.modal-display-connection {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 200px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title title title title title'
+                         'left_side right_side right_side right_side right_side';
+}
+
+
+.modal-display-event {
+    display: grid;
+    margin: 20% auto;
+    width: 500px;
+    height: 200px;
+    border: solid;
+    border-width: 1px;
+    border-color: #b8b9bc;
+    border-radius: 10px;
+    background-color: white;
+    padding: 10px;
+    overflow-y: auto;
+    grid-template-areas: 'title title title title title'
+                         'left_side right_side right_side right_side right_side';
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    }
+  to {
+    opacity: 1;
+    }
+}
+
+.modal-title {
+    grid-area: title;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 50px;
+    height: 50px;
+    font-size: 30px;
+    padding-left: 30px;
+    border-size: 1px;
+    border-bottom: solid;
+    border-color: black;
+}
+
+.modal-left-side {
+    grid-area: left_side;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0px 0;
+    width: 125px;
+    height:125px;
+    border-size: 1px;
+    border-right: solid;
+    border-color: black;
+
+}
+
+.modal-right-side {
+    grid-area: right_side;
+    padding-left: 20px;
+    margin: 10px -60px;
+    width: 100%;
+    height:125px;
+}
+
+.modal-message {
+    grid-area: message;
+    margin-top: -70px;
+    padding-left: 20px;
+    padding-top: 10px;
+}
+
+.my-connection {
+    display: grid;
+    grid-template-areas: 'image information';
+}
+
+.my-connection-image {
+    grid-area: image;
+    width: auto;
+    height:90%;
+    border-size: 1px;
+    border-right: solid;
+    border-color: black;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.my-connection-information {
+    grid-area: information;
+    width: 200px;
+    height:90%;
+    padding-top: 8px;
+    margin-left:-30px;
+}
+
+
+.my-event {
+    display: grid;
+    grid-template-areas: 'image information';
+}
+
+.my-event-image {
+    grid-area: image;
+    width: auto;
+    height:90%;
+    border-size: 1px;
+    border-right: solid;
+    border-color: black;
+    padding-right: 10px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.my-event-information {
+    grid-area: information;
+    width: 200px;
+    height:90%;
+    padding-top: 8px;
+    margin-left:0px;
+}
+
+
+.my-message-title {
+    margin: 10px;
+    border-bottom: solid;
+    border-color: black;
+    border-width: 1px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.my-message-content {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+}
+
+

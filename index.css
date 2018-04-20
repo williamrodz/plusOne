@@ -1,38 +1,85 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
-}
-
-li {
-    float: left;
-}
-
-li a {
-    display: block;
-    color: #666;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-li a:hover:not(.active) {
-    background-color: #ddd;
-}
-
-li a.active {
-    color: white;
-    background-color: #4CAF50;
-}
-
-#icon{
-    width: 20px;
-}
-
 body{
-    font-family: arial;
-    font-size: 13pt;
+    margin: 0;
+    background-color: #EAEBEF;
+    font-family: 'Helvetica', 'Georgia', 'Times New Roman';
 }
+
+
+.menu{
+    width: 100%;
+    height: 71px;     
+    display: flex;
+    flex-direction: row;
+    background-color: #EAEBEF;    
+
+}
+
+a{
+    text-decoration:none;
+}
+.menuItem{
+    width: 100%;
+    text-align: center;
+    border: 1px solid #bbb;
+
+    display: block;
+    color: black;
+    padding: 25px 0px;
+    font-size: 18px;     
+}
+
+.menuItem:hover {
+    color: white;
+    background-color: #73a9ef;
+}
+
+
+.iconBox{
+    color: white;
+    background-color: #ADD8E6;
+}
+
+.icon{
+    width: 40px ;
+}
+
+#splashScreenIcon{
+    padding-top: 100px;
+    width: 300px;
+
+}
+
+
+
+.splashScreenContents{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.splashScreenText{
+    font-size: 30px;
+    color: black;
+    font-kerning: normal;
+}
+
+.aboutText{
+    position: absolute;
+    bottom: 10px;
+}
+
+.logInSignUpButtons{
+    background-color: #3333FF;
+    color:white;
+    border-radius: 20px;
+    font-size: 20px;
+    width: 200px;
+    height: 70px;
+}
+
+.logInSignUpButtons:hover{
+    background-color: white;
+    color: #1d74e5;
+}
+
+.logInSignUpButtons.

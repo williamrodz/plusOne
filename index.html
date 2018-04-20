@@ -3,15 +3,28 @@
 <head>
 	<meta charset="UTF-8">
 	<title>plusOne</title>
+	<!-- Use mobile-aware viewport -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="index.css">
 </head>
-<body>
-	<ul>
-		<li><a class="active" href="#home"><img id="icon" src="https://freeiconshop.com/wp-content/uploads/edd/many-people-outline.png" /></a></li>
-		<li><a href="#contact">Connect</a></li>
-		<li><a href="#about">Events</a></li>
-		<li><a href="#about">Forum</a></li>
-		<li><a href="#about">Profile</a></li>
-	</ul>
+<body class="splashScreenContents">
+<div class="menu">
+  <div class="menuItem"><a href="#home"><img class="icon" src="logo.png" /></a></div>
+  <div class="menuItem"><a href="#connect">Connect</a></div>
+  <div class="menuItem"><a href="#events">Events</a></div>
+  <div class="menuItem"><a href="#forum">Forum</a></div>
+  <div class="menuItem"><a class="active" href="profile.html">Profile</a></div>
+</div>
+	<img id="splashScreenIcon" src="logo.png" />
+	<p class="splashScreenText">plusOne</p>
+	<div class="logInSignUpBlock">
+		<button class= "logInSignUpButtons"type="button" onclick="alert('Low fidelity back end')">LOG IN
+		</button>
+		<button class="logInSignUpButtons"type="button" onclick="alert('Low fidelity back end')"">SIGN UP
+		</button>		
+	</div>
+	<div class="aboutText">
+		<a href="https://cdn3.uvnimg.com/62/a5/7a7c1f424bceb41e1c12baef01b9/6719e9635f72445a98c393b1a4051842">About Us</a>
+	</div>
 </body>
 </html>
