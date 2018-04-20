@@ -69,7 +69,7 @@ function displayConnection(connection, current_document) {
 
 	modal_display.classList.add("modal-display-connection")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Right side</div>'
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Nationality: Mexican <br>Hobbies: hiking, running</div>'
 
 	modal.appendChild(modal_display)
 }
@@ -84,7 +84,7 @@ function displayEvent(event, current_document) {
 
 	modal_display.classList.add("modal-display-event")
 
-	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">Right side</div><div class="modal-event-remove">Remove</div>'
+	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">8:00AM-9:00AM<br>32-598</div><div class="modal-event-remove">Remove</div>'
 
 	modal.appendChild(modal_display)
 
