@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>plusOne</title>
+    <!-- Load style sheets -->
+    <link rel="stylesheet" href="meet.css">
+    <link rel="stylesheet" href="index.css">
+
+    <!-- JavaScript files -->
+    <script src="meet.js"></script>
+</head>
+
+<body>
+    <div class="menu">
+        <a href="index.html" class="menuItem"><div ><img class="icon" src="logo.png" /></div></a>
+        <a href="meet.html" class="menuItem currentMenuItem"><div>Connect</div></a>
+        <a href="calendar.html" class="menuItem"><div >Events</div></a>
+        <a href="#forum" class="menuItem"><div >Forum</div></a>
+        <a class="menuItem" href="profile.html"><div>Profile</div></a>
+    </div>    
+
+    <div class="meet-layout">
+        <div class="filters-bar">
+            <span class="internal-header">Filter your search:</span>
+            <button class="clear-all-filters">Clear all</button>
+            <div id="filters-list">
+                <!--Filters added programatically-->
+            </div>
+
+        </div>
+
+        <div class="status-bar">
+            <span class='num-of-connections'>Currently you have 0 connections
+                <br>&emsp;&emsp;&emsp;&emsp;Start Connecting Now!
+            </span>
+            <div class='matching-criteria'>
+                <span id='numPeople'>0</span>
+                <span id='peopleMatch'>&emsp;people match the criteria</span>
+            </div>
+        </div>
+
+        <div class="people-list">
+            <!--People added programatically-->
+        </div>
+
+    </div>
+
+    <div id="modal-meet">
+        <!--Message added programatically-->
+    </div>
+
+</body>
+
+</html>
