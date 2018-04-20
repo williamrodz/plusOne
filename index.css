@@ -28,7 +28,7 @@ a{
     font-size: 18px;     
 }
 
-.menuItem:hover:not(.active) {
+.menuItem:hover {
     color: white;
     background-color: #73a9ef;
 }
@@ -75,6 +75,11 @@ a{
     font-size: 20px;
     width: 200px;
     height: 70px;
+}
+
+.logInSignUpButtons:hover{
+    background-color: white;
+    color: #1d74e5;
 }
 
 .logInSignUpButtons.
