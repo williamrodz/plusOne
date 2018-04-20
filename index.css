@@ -73,7 +73,7 @@ a{
 }
 
 .logInSignUpButtons{
-    background-color: #3333FF;
+    background-color: #1d74e5;
     color:white;
     border-radius: 20px;
     font-size: 20px;
@@ -82,8 +82,8 @@ a{
 }
 
 .logInSignUpButtons:hover{
-    background-color: white;
-    color: #1d74e5;
+    background-color: #73a9ef;
+    color: white;
 }
 
 .logInSignUpButtons.
