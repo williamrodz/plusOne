@@ -312,7 +312,7 @@ function addListOfPeople(list) {
         addButton.title = "Add this person to my connections";
 
         addButton.addEventListener("click", (e) => {
-            displayMessage("Add person", "Would you like to connect with?", document);
+            displayMessage("Add person", "Would you like to connect with Alicia?", document);
         });
 
         addButtonDiv.appendChild(addButton);
@@ -387,7 +387,7 @@ function get(selector) {
 function displayMessage(title, message, current_document) {
     var modal = get("#modal-meet");
     modal.style.display = "block";
-    modal.innerHTML = ""
+    modal.innerHTML = "";
 
     var modalDisplay = current_document.createElement('div');
     modalDisplay.classList.add("modal-display-message-meet");
@@ -395,10 +395,26 @@ function displayMessage(title, message, current_document) {
     modalDisplay.innerHTML = '<div class="modal-title-meet">' + title + '</div><div class="modal-message-meet">' + message + '</div>' +
         '<div class="message-optional"> <textarea class="textarea-message" rows="4" cols="50">Message (Optional)</textarea> </div>' +
         '<div class="message-buttons-container">' +
-        '<button class="message-buttons-format">Send Request</button>' +
-        '<button class="message-buttons-format">Go Back</button>' +
+        '<button id="btnSend" class="message-buttons-format">Send Request</button>' +
+        '<button id="btnBack" class="message-buttons-format">Go Back</button>' +
         '</div>';
 
-    modal.appendChild(modalDisplay)
+    modal.appendChild(modalDisplay);
 
+    let textArea = get(".textarea-message");
+    textArea.addEventListener("click", (e) => {
+        e.target.select();
+    });
+
+    let btnSend = get("#btnSend");
+    btnSend.addEventListener("click", (e) => {
+        let modalMeet = get("#modal-meet");
+        modalMeet.style.display = "none";
+    });
+
+    let btnBack = get("#btnBack");
+    btnBack.addEventListener("click", (e) => {
+        let modalMeet = get("#modal-meet");
+        modalMeet.style.display = "none";
+    });
 }

@@ -62,9 +62,11 @@ a{
 }
 
 .splashScreenText{
+    margin: 0px;
     font-size: 30px;
     color: black;
     font-kerning: normal;
+    font-weight: bold;
 }
 
 .aboutText{
@@ -73,6 +75,7 @@ a{
 }
 
 .logInSignUpButtons{
+    margin-top: 40px;
     background-color: #1d74e5;
     color:white;
     border-radius: 20px;
@@ -85,5 +88,3 @@ a{
     background-color: #73a9ef;
     color: white;
 }
-
-.logInSignUpButtons.

@@ -54,10 +54,9 @@ function displayMessage(message, current_document) {
 
 	modal_display.classList.add("modal-display-message")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><div class="modal-message">Message from Alicia Smith!!!!!!!!</div>'
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><div class="modal-message">Hi how\'s it going? Just wanted to meet up for coffee before class</div>'
 
 	modal.appendChild(modal_display)
-	console.log("displaying message")
 }
 
 function displayConnection(connection, current_document) {
@@ -70,10 +69,9 @@ function displayConnection(connection, current_document) {
 
 	modal_display.classList.add("modal-display-connection")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Right side</div>'
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Nationality: Mexican <br>Hobbies: hiking, running</div>'
 
 	modal.appendChild(modal_display)
-	console.log("displaying connection")
 }
 
 function displayEvent(event, current_document) {
@@ -86,25 +84,22 @@ function displayEvent(event, current_document) {
 
 	modal_display.classList.add("modal-display-event")
 
-	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">Right side</div><div class="modal-event-remove">Remove</div>'
+	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">8:00AM-9:00AM<br>32-598</div><div class="modal-event-remove">Remove</div>'
 
 	modal.appendChild(modal_display)
 
 	Util.one(".modal-event-remove").addEventListener("click", function(e){
 		e.preventDefault()
 		e.stopPropagation()
-		console.log("here")
 		removeEvent(event)
 		Util.one("#modal").style.display = "none";
 		eventBeingDisplayed = null;
 		connectionBeingDisplayed = null;
 	})
-	console.log("displaying event")
 }
 
 function removeEvent(event) {
 	var events = Util.one("#my-events");
 	events.children[1].removeChild(event)
-	//events.removeChild(eventBeingDisplayed)
 }
 

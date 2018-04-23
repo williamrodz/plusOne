@@ -169,8 +169,6 @@ function displayEvent(event, current_document) {
         e.stopPropagation()
         Util.one("#modal").style.display = "none";
     })
-
-    console.log("displaying event")
 }
 
 /**
