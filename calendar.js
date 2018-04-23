@@ -1,8 +1,35 @@
 var class_description = "08:00 English Class";
 var class_blocks = ["14", "16", "24", "26", "34", "36", "44", "46"];
 
+//Possible filters for finding events
+var filters = [
+
+    {
+        title: "Social",
+        values: ["Kids", "Family", "Religion", "Culture"]
+    },
+    {
+        title: "Professional",
+        values: ["Job Search", "Career Development", "Networking"]
+    },
+    {
+        title: "Academic",
+        values: ["Innovation Course", "English Classes", "Korean Classes", "Teaching Labs"]
+    },
+    {
+        title: "Community Service",
+        values: ["School", "Hospital"]
+    }
+];
+
+var socialFilter = [];
+var professionalFilter = [];
+var academicFilter = [];
+var communityServiceFilter = [];
+
 // When document had fully loaded 
 document.addEventListener("DOMContentLoaded", function(event) {
+    createFilters();
     createCalendarDateBlock();
     addMonthToBlock();
     createWeekDaysLabels();
@@ -123,7 +150,6 @@ function addEvent(day_block_id, type, description) {
     document.getElementById(day_block_id).appendChild(event_slot);   
 }
 
-
 function displayEvent(event, current_document) {
     var modal = Util.one("#modal")
     modal.style.display = "block";
@@ -145,6 +171,102 @@ function displayEvent(event, current_document) {
     })
 
     console.log("displaying event")
+}
+
+/**
+ * Adds or remove selected value to specific array filter. 
+ * It keeps UI filters synchronized with their model.
+ * @param {*} isChecked {Boolean} true if element will be added, false if removed.
+ * @param {*} element {String} to be added or removed.
+ * @param {*} array {Array} where to add or remove.
+ */
+function updateArray(isChecked, element, array) {
+    if (isChecked) {
+        array.push(element);
+    } else {
+        let index = indexOfElementInArray(element, array);
+        if (index >= 0) {
+            array.splice(index, 1);
+        }
+    }
+}
+
+/**
+ * Returns the selected element
+ * @param {*} selector {String}
+ */
+function get(selector) {
+    return document.querySelector(selector);
+}
+
+function createFilters() {
+    //let filtersBar = get(".filters-bar");
+    let filtersList = get("#filters-list");
+
+    //Create all filters
+    for (let numFilter = 0; numFilter < filters.length; numFilter++) {
+        let filter = filters[numFilter];
+        //Filter div
+        let filterDiv = document.createElement("div");
+        filterDiv.classList.add("filter");
+        //Filter title
+        let titleSpan = document.createElement("span");
+        titleSpan.classList.add("internal-header-filter");
+        titleSpan.innerHTML = filter.title;
+        //Filter options
+        let filterOptionsDiv = document.createElement("div");
+        filterOptionsDiv.classList.add("options");
+
+        //Create and add options to filter
+        for (let numOption = 0; numOption < filter.values.length; numOption++) {
+            let optionLabel = document.createElement("label");
+            optionLabel.innerHTML = filter.values[numOption];
+            let optionInput = document.createElement("input");
+            optionInput.setAttribute("type", "checkbox");
+            optionInput.setAttribute("name", filter.title);
+            optionInput.setAttribute("value", filter.values[numOption]);
+            //Add listener to option input
+            optionInput.addEventListener("change", (e) => {
+                let isChecked = e.target.checked;
+                let filterName = e.target.name;
+                let optionValue = e.target.value;
+
+                switch (filterName) {
+                    case "Social":
+                        updateArray(isChecked, optionValue, socialFilter);
+                        break;
+                    case "Professional":
+                        updateArray(isChecked, optionValue, professionalFilter);
+                        break;
+                    case "Academic":
+                        updateArray(isChecked, optionValue, academicFilter);
+                        break;
+                    case "Community Service":
+                        updateArray(isChecked, optionValue, communityServiceFilter);
+                        break;
+                    default:
+                        console.error("Filter (" + filterName + ") doesn't exist!");
+                        break;
+                }
+            });
+            //Add input to its corresponding label
+            optionLabel.insertBefore(optionInput, optionLabel.firstChild);
+            //Add label to filter options div
+            filterOptionsDiv.appendChild(optionLabel);
+        }
+
+        //Add title and options to filter
+        filterDiv.appendChild(titleSpan);
+        filterDiv.appendChild(filterOptionsDiv);
+
+        //Add filter to filters list        
+        filtersList.appendChild(filterDiv);
+
+        let horizontalBar = document.createElement("div");
+        horizontalBar.classList.add("horizontal-bar");
+
+        filtersList.appendChild(horizontalBar);
+    }
 }
 
 
