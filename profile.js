@@ -33,6 +33,13 @@ Util.events(document, {
 			})
 		})
 
+		var myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
+		console.log(myConnections.length)
+		for (var index=0; index < myConnections.length; index++){
+			var connection = myConnections[index];
+			addConnectionToDisplay(connection);
+		}
+
 		Util.all(".my-connection").forEach(function(connection) {
 			connection.addEventListener("click", function(e){
 				e.preventDefault()
@@ -101,5 +108,26 @@ function displayEvent(event, current_document) {
 function removeEvent(event) {
 	var events = Util.one("#my-events");
 	events.children[1].removeChild(event)
+}
+
+function addConnectionToDisplay(connection) {
+	var connections = Util.one("#my-connections").children[1];
+	var display_connection = document.createElement("div")
+	display_connection.classList.add("my-item")
+	display_connection.classList.add("my-connection")
+	
+	var image = document.createElement("img")
+	image.classList.add("my-connection-image")
+	image.src = "placeholder_connection.png"
+	display_connection.appendChild(image)
+
+	var connectionInformation = document.createElement("div")
+	connectionInformation.classList.add("my-connection-information")
+
+	connectionInformation.innerHTML = connection.name
+
+	display_connection.appendChild(connectionInformation)
+
+	connections.appendChild(display_connection)
 }
 
