@@ -33,9 +33,12 @@ Util.events(document, {
 			})
 		})
 
-		myConnections.forEach(function(connection) {
-			addConnectionToDisplay(connection)
-		})
+		var myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
+		console.log(myConnections.length)
+		for (var index=0; index < myConnections.length; index++){
+			var connection = myConnections[index];
+			addConnectionToDisplay(connection);
+		}
 
 		Util.all(".my-connection").forEach(function(connection) {
 			connection.addEventListener("click", function(e){
@@ -121,7 +124,7 @@ function addConnectionToDisplay(connection) {
 	var connectionInformation = document.createElement("div")
 	connectionInformation.classList.add("my-connection-information")
 
-	connectionInformation.innerHTML = connection.getName()
+	connectionInformation.innerHTML = connection.name
 
 	display_connection.appendChild(connectionInformation)
 
