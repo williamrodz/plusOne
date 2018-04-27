@@ -4,11 +4,11 @@ var filters = [
 
     {
         title: "Nationality",
-        values: ["American", "Canadian", "Chinese", "Korean", "Mexican"]
+        values: ["American", "Canadian", "Chinese", "Korean", "Mexican", "Spanish"]
     },
     {
         title: "Language",
-        values: ["Chinese", "English", "French", "Japanese", "Spanish"]
+        values: ["Catalan", "Chinese", "English", "French", "Japanese", "Spanish"]
     },
     {
         title: "Hobby",
@@ -69,6 +69,34 @@ var people = [
         description: "Love visiting foreign countries and learning about other cultures"
     },
     {
+        name: "Eunjin Koo",
+        age: 30,
+        origin: {
+            nationality: ["Korean"],
+            country: "Korea",
+            city: "Seul",
+            stateOrRegion: "SL"
+        },
+        hobbies: ["Reading", "Swimming"],
+        professionalInterests: ["Computer science"],
+        languages: ["Korean", "English"],
+        description: "Love author food and I enjoy trying new restaurants during the weekends"
+    },
+    {
+        name: "John Smith",
+        age: 39,
+        origin: {
+            nationality: ["American"],
+            country: "US",
+            city: "Boston",
+            stateOrRegion: "MA"
+        },
+        hobbies: ["Reading", "Swimming", "Entrepreneur", "Listening to music"],
+        professionalInterests: ["Computer science", "Playing musical instruments"],
+        languages: ["English"],
+        description: "Love playing piano"
+    },
+    {
         name: "Jorge Ramirez",
         age: 29,
         origin: {
@@ -83,18 +111,18 @@ var people = [
         description: "Love reading latin american writers like Alberto Fuguet and Gabriel Garcia Marquez"
     },
     {
-        name: "Eunjin Koo",
+        name: "Carles Mentuy",
         age: 30,
         origin: {
-            nationality: ["Korean"],
-            country: "Korea",
-            city: "Seul",
-            stateOrRegion: "SL"
+            nationality: ["Spanish"],
+            country: "Spain",
+            city: "Barcelona",
+            stateOrRegion: "Catalonia"
         },
-        hobbies: ["Reading", "Swimming"],
-        professionalInterests: ["Computer science"],
-        languages: ["Korean", "English"],
-        description: "Love author food and I enjoy trying new restaurants during the weekends"
+        hobbies: ["Swimming"],
+        professionalInterests: ["Reading"],
+        languages: ["Spanish", "Catalan"],
+        description: "Love reading Arturo Perez Reverte"
     }
 
 ];
@@ -106,10 +134,16 @@ document.addEventListener("DOMContentLoaded", function (event) {
     createFilters();
     //Add initial list of people
     addListOfPeople();
-    updateNumPeople(people.length);
 
+    //Show how many people it is possible to connect with
+    showInitialNumberOfPersonsToConnectWith();
+
+    //Button Clear All filters
     let btnClearAllFilters = get(".clear-all-filters");
     btnClearAllFilters.addEventListener("click", (e) => {
+
+        clearArrayFilters();
+
         let arrayCheckbox = document.querySelectorAll("input[type='checkbox']");
 
         arrayCheckbox.forEach((element) => {
@@ -117,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         });
 
         addListOfPeople(people);
-        updateNumPeople(people.length);
+        showInitialNumberOfPersonsToConnectWith();
     });
 
     window.addEventListener("click", (e) => {
@@ -195,8 +229,11 @@ function createFilters() {
 
                 addListOfPeople(filteredPeople);
 
-                updateNumPeople(filteredPeople.length);
-
+                if (areFiltersEmpty()) {
+                    showInitialNumberOfPersonsToConnectWith();
+                } else {
+                    updateNumPeople(filteredPeople.length);
+                }
 
             });
             //Add input to its corresponding label
@@ -330,6 +367,22 @@ function addListOfPeople(list) {
     }
 }
 
+function showInitialNumberOfPersonsToConnectWith() {
+    let numPeopleSpan = get("#numPeople");
+    numPeopleSpan.innerHTML = "";
+
+    let peopleMatchSpan = get("#peopleMatch");
+    let numPeople = people.length;
+
+    if (numPeople === 1) {
+        peopleMatchSpan.innerHTML = "You have 1 person to connect with";
+    } else if (numPeople > 1) {
+        peopleMatchSpan.innerHTML = "You have " + numPeople + " persons to connect with";
+    } else {
+        peopleMatchSpan.innerHTML = "You have 0 persons to connect with";
+    }
+}
+
 function updateNumPeople(numPeople) {
     let numPeopleSpan = get("#numPeople");
     numPeopleSpan.innerHTML = numPeople
@@ -339,7 +392,7 @@ function updateNumPeople(numPeople) {
     if (numPeople === 1) {
         peopleMatchSpan.innerHTML = "&emsp;person matches the criteria";
     } else {
-        peopleMatchSpan.innerHTML = "&emsp;people match the criteria";
+        peopleMatchSpan.innerHTML = "&emsp;persons match the criteria";
     }
 }
 
@@ -359,6 +412,13 @@ function updateArray(isChecked, element, array) {
             array.splice(index, 1);
         }
     }
+}
+
+function clearArrayFilters() {
+    nationalityFilter = [];
+    languageFilter = [];
+    hobbyFilter = [];
+    professionalIntsFilter = [];
 }
 
 /**
@@ -393,10 +453,10 @@ function displayMessage(title, message, current_document) {
     modalDisplay.classList.add("modal-display-message-meet");
 
     modalDisplay.innerHTML = '<div class="modal-title-meet">' + title + '</div><div class="modal-message-meet">' + message + '</div>' +
-        '<div class="message-optional"> <textarea class="textarea-message" rows="4" cols="50">Message (Optional)</textarea> </div>' +
+        '<div class="message-optional"> <textarea class="textarea-message" rows="4" cols="50" maxlength="250" placeholder="Message (Optional)"></textarea> </div>' +
         '<div class="message-buttons-container">' +
         '<button id="btnSend" class="message-buttons-format">Send Request</button>' +
-        '<button id="btnBack" class="message-buttons-format">Go Back</button>' +
+        '<button id="btnBack" class="message-buttons-format">Cancel</button>' +
         '</div>';
 
     modal.appendChild(modalDisplay);
