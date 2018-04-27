@@ -147,6 +147,7 @@ li b{
     grid-row: 1;
     width: auto;
     height: auto;
+    margin: auto;
 }
 
 .calendar-panel {
