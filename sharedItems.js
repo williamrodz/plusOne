@@ -85,7 +85,7 @@ allConnections.push(eunjinKooConnection)
 myConnections.push(aliciaSmithConnection)
 myConnections.push(benChenConnection)
 myConnections.push(carlaGomezConnection)
-//sessionStorage.setItem("my_connections", JSON.stringify(myConnections));
+sessionStorage.setItem("my_connections", JSON.stringify(myConnections));
 console.log(myConnections.length)
 if (!sessionStorage.getItem("my_connections")) {
 	sessionStorage.setItem("my_connections", myConnections);

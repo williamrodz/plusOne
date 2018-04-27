@@ -25,6 +25,8 @@ var languageFilter = [];
 var hobbyFilter = [];
 var professionalIntsFilter = [];
 
+var currentPerson = null;
+
 var people = [
     {
         name: "Alicia Smith",
@@ -349,6 +351,7 @@ function addListOfPeople(list) {
         addButton.title = "Add this person to my connections";
 
         addButton.addEventListener("click", (e) => {
+            currentPerson = person;
             displayMessage("Add person", "Would you like to connect with Alicia?", document);
         });
 
@@ -468,6 +471,9 @@ function displayMessage(title, message, current_document) {
 
     let btnSend = get("#btnSend");
     btnSend.addEventListener("click", (e) => {
+        var connections = JSON.parse(sessionStorage.getItem("my_connections"));
+        connections.push(currentPerson);
+        sessionStorage.setItem("my_connections", JSON.stringify(connections));
         let modalMeet = get("#modal-meet");
         modalMeet.style.display = "none";
     });
