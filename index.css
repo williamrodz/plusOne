@@ -1,7 +1,10 @@
+
 body{
     margin: 0;
     background-color: #EAEBEF;
     font-family: 'Helvetica', 'Georgia', 'Times New Roman';
+    --whiteDisplayIcon: none;
+    --blueDisplayIcon: inherit;
 }
 
 
@@ -35,6 +38,8 @@ a{
 .menuItem:hover {
     color: white;
     background-color: #73a9ef;
+    --blueDisplayIcon: inherit;
+    --whiteDisplayIcon: inherit;
 }
 
 
@@ -44,7 +49,14 @@ a{
 }
 
 .icon{
-    width: 40px ;
+    width: 40px;
+    display: var(--blueDisplayIcon);
+}
+
+
+.whiteIcon{
+    width: 40px;
+    display: var(--whiteDisplayIcon);
 }
 
 
