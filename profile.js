@@ -16,6 +16,12 @@ Util.events(document, {
 			}
 		})
 
+		var myMessages = JSON.parse(sessionStorage.getItem("my_messages"));
+		for (var index=0; index < myMessages.length; index++){
+			var message = myMessages[index];
+			addMessageToDisplay(message);
+		}
+
 		Util.all(".my-message").forEach(function(message) {
 			message.addEventListener("click", function(e){
 				e.preventDefault()
@@ -23,6 +29,12 @@ Util.events(document, {
 				displayMessage(message, document)
 			})
 		})
+
+		var myEvents = JSON.parse(sessionStorage.getItem("my_events"));
+		for (var index=0; index < myEvents.length; index++){
+			var event = myEvents[index];
+			addEventToDisplay(event);
+		}
 
 		Util.all(".my-event").forEach(function(event) {
 			event.addEventListener("click", function(e){
@@ -32,9 +44,7 @@ Util.events(document, {
 				displayEvent(event, document)
 			})
 		})
-
 		var myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
-		console.log(myConnections.length)
 		for (var index=0; index < myConnections.length; index++){
 			var connection = myConnections[index];
 			addConnectionToDisplay(connection);
@@ -110,6 +120,25 @@ function removeEvent(event) {
 	events.children[1].removeChild(event)
 }
 
+function addMessageToDisplay(message) {
+	var messages = Util.one("#my-messages").children[1];
+	var display_message = document.createElement("div")
+	display_message.classList.add("my-item")
+	display_message.classList.add("my-message")
+
+	var messageTitle = document.createElement("div")
+	messageTitle.classList.add("my-message-title")
+	messageTitle.innerHTML = message.from
+	display_message.appendChild(messageTitle)
+
+	var messageContent = document.createElement("div")
+	messageContent.classList.add("my-message-content")
+	messageContent.innerHTML = message.content
+	display_message.appendChild(messageContent)
+
+	messages.appendChild(display_message)
+}
+
 function addConnectionToDisplay(connection) {
 	var connections = Util.one("#my-connections").children[1];
 	var display_connection = document.createElement("div")
@@ -129,5 +158,26 @@ function addConnectionToDisplay(connection) {
 	display_connection.appendChild(connectionInformation)
 
 	connections.appendChild(display_connection)
+}
+
+function addEventToDisplay(event) {
+	var events = Util.one("#my-events").children[1];
+	var display_event = document.createElement("div")
+	display_event.classList.add("my-item")
+	display_event.classList.add("my-event")
+	
+	var image = document.createElement("img")
+	image.classList.add("my-event-image")
+	image.src = "event.png"
+	display_event.appendChild(image)
+
+	var eventInformation = document.createElement("div")
+	eventInformation.classList.add("my-event-information")
+
+	eventInformation.innerHTML = event.title
+
+	display_event.appendChild(eventInformation)
+
+	events.appendChild(display_event)
 }
 
