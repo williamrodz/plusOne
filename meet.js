@@ -940,10 +940,10 @@ function displayMessage(title, message, current_document) {
 
     let btnSend = get("#btnSend");
     btnSend.addEventListener("click", (e) => {
-        /*var connections = JSON.parse(sessionStorage.getItem("my_connections"));
+        var connections = JSON.parse(sessionStorage.getItem("my_connections"));
         connections.push(currentPerson);
         sessionStorage.setItem("my_connections", JSON.stringify(connections));
-        */
+        
         let modalMeet = get("#modal-meet");
         modalMeet.style.display = "none";
 
