@@ -27,6 +27,32 @@ var professionalIntsFilter = [];
 
 var currentPerson = null;
 
+
+var groups = [
+
+    {
+        name: "Babysitting",
+        language: "English",
+        description: "Join this group if you're interested in doing babysitting or need a babysitter."
+    },
+    {
+        name: "Korean friends",
+        language: "Korean",
+        description: "Join this group if you want to have some Korean time and forget about English for a while."
+    },
+    {
+        name: "A la mexicana",
+        language: "Spanish",
+        description: "If you want to discuss about politics and current events happening in Mexico, please subscribe to this group"
+    },
+    {
+        name: "English club",
+        language: "English",
+        description: "Improve your English by sharing thoughts with other members of this group. Every week a different topic for discussion."
+    }
+
+];
+
 var people = [
     {
         name: "Alicia Smith",
@@ -71,13 +97,27 @@ var people = [
         description: "Love visiting foreign countries and learning about other cultures"
     },
     {
+        name: "Carles Mentuy",
+        age: 30,
+        origin: {
+            nationality: ["Spanish"],
+            country: "Spain",
+            city: "Barcelona",
+            stateOrRegion: "Catalonia"
+        },
+        hobbies: ["Swimming"],
+        professionalInterests: ["Reading"],
+        languages: ["Spanish", "Catalan"],
+        description: "Love reading Arturo Perez Reverte"
+    },
+    {
         name: "Eunjin Koo",
         age: 30,
         origin: {
             nationality: ["Korean"],
             country: "Korea",
-            city: "Seul",
-            stateOrRegion: "SL"
+            city: "Seoul",
+            stateOrRegion: "SCA" //Seoul Capital Area
         },
         hobbies: ["Reading", "Swimming"],
         professionalInterests: ["Computer science"],
@@ -111,20 +151,6 @@ var people = [
         professionalInterests: ["Computer science"],
         languages: ["Spanish"],
         description: "Love reading latin american writers like Alberto Fuguet and Gabriel Garcia Marquez"
-    },
-    {
-        name: "Carles Mentuy",
-        age: 30,
-        origin: {
-            nationality: ["Spanish"],
-            country: "Spain",
-            city: "Barcelona",
-            stateOrRegion: "Catalonia"
-        },
-        hobbies: ["Swimming"],
-        professionalInterests: ["Reading"],
-        languages: ["Spanish", "Catalan"],
-        description: "Love reading Arturo Perez Reverte"
     }
 
 ];
