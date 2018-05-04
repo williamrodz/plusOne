@@ -60,7 +60,7 @@ Util.events(document, {
 	}
 })
 
-// TODO: clear modal
+
 function displayMessage(message, current_document) {
 	var modal = Util.one("#modal")
 	modal.style.display = "block";
@@ -71,9 +71,17 @@ function displayMessage(message, current_document) {
 
 	modal_display.classList.add("modal-display-message")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><div class="modal-message">Hi how\'s it going? Just wanted to meet up for coffee before class</div>'
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith<span class="modal-close">&times;</span></div><div class="modal-message">Hi how\'s it going? Just wanted to meet up for coffee before class</div>'
 
 	modal.appendChild(modal_display)
+
+	Util.one(".modal-close").addEventListener("click", function(e){
+		e.preventDefault()
+		e.stopPropagation()
+		Util.one("#modal").style.display = "none";
+		eventBeingDisplayed = null;
+		connectionBeingDisplayed = null;
+	})
 }
 
 function displayConnection(connection, current_document) {
@@ -86,9 +94,17 @@ function displayConnection(connection, current_document) {
 
 	modal_display.classList.add("modal-display-connection")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith</div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Nationality: Mexican <br>Hobbies: hiking, running</div>'
+	modal_display.innerHTML = '<div class="modal-title">Alicia Smith<span class="modal-close">&times;</span></div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Nationality: Mexican <br>Hobbies: hiking, running</div>'
 
 	modal.appendChild(modal_display)
+
+	Util.one(".modal-close").addEventListener("click", function(e){
+		e.preventDefault()
+		e.stopPropagation()
+		Util.one("#modal").style.display = "none";
+		eventBeingDisplayed = null;
+		connectionBeingDisplayed = null;
+	})
 }
 
 function displayEvent(event, current_document) {
@@ -101,9 +117,17 @@ function displayEvent(event, current_document) {
 
 	modal_display.classList.add("modal-display-event")
 
-	modal_display.innerHTML = '<div class="modal-title">English Class</div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">8:00AM-9:00AM<br>32-598</div><div class="modal-event-remove">Remove</div>'
+	modal_display.innerHTML = '<div class="modal-title">English Class<span class="modal-close">&times;</span></div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">8:00AM-9:00AM<br>32-598</div><div class="modal-event-remove">Remove</div>'
 
 	modal.appendChild(modal_display)
+
+	Util.one(".modal-close").addEventListener("click", function(e){
+		e.preventDefault()
+		e.stopPropagation()
+		Util.one("#modal").style.display = "none";
+		eventBeingDisplayed = null;
+		connectionBeingDisplayed = null;
+	})
 
 	Util.one(".modal-event-remove").addEventListener("click", function(e){
 		e.preventDefault()
