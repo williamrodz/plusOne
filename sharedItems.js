@@ -2,8 +2,10 @@ var allConnections = [];
 var allEvents = [];
 
 var myConnections = [];
+var myConnectionsGroups = [];
 var myEvents = [];
 var myMessages = [];
+
 
 var aliciaSmithConnection = {
         name: "Alicia Smith",

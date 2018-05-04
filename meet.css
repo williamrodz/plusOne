@@ -100,6 +100,7 @@ body {
     font-family: Helvetica, Georgia, 'Times New Roman';
     font-size: 14px;
     font-weight: bold;
+
 }
 
 .num-of-connections {
@@ -108,6 +109,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 5px;
 }
 
 .matching-criteria {
@@ -121,9 +123,9 @@ body {
     justify-content: center;
 }
 
-/** List of people */
+/** List of people and groups*/
 
-.people-list {
+.people-groups-list {
     grid-row: 2;
     grid-column: 2;
     background-color: #EAEBEF;    
@@ -133,6 +135,10 @@ body {
     margin: 3px;
     
 }
+
+/**
+    For persons
+**/
 
 .person {
     display: grid;
@@ -194,6 +200,21 @@ body {
     color: black;
 }
 
+.added-friend {
+    border-radius: 10px;
+    border: 0px none;
+    margin: 3px;
+    font-size: 14px;
+    background-color: rgb(71, 163, 71);
+    color: white;
+    width: 80px;
+    height: 40px;
+}
+
+.added-friend:focus{
+    outline:0;
+}
+
 .person-description {
     grid-column: 1 /4;
     grid-row: 3;
@@ -203,6 +224,79 @@ body {
     padding: 10px;
 }
 
+/**
+    For groups
+**/
+.group {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 3fr;
+    background-color: rgb(218, 232, 253);
+    text-align: center;
+    margin: 3px;
+    font-family: Helvetica, Georgia, 'Times New Roman';
+    border: white 1px solid;
+}
+
+.group-name {
+    grid-column: 1;
+    grid-row: 1;
+    font-family: Helvetica, Georgia, 'Times New Roman';
+    font-size: 1em;
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    padding: 10px;
+}
+
+.group-language {
+    grid-column: 1;
+    grid-row: 2;
+    text-align: center;
+
+}
+
+.add-group-div {
+    grid-column: 2;
+    grid-row: 1 / 3;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    margin: 5px;
+}
+
+.add-group {
+    border-radius: 10px;
+    border: 0px none;
+    margin: 3px;
+    font-size: 30px;
+    background-color: #1d74e5;
+    color: white;
+    width: 80px;
+    height: 40px;
+}
+
+.add-group:hover {
+    background-color: #73a9ef;
+    color: black;
+}
+
+.group-description {
+    grid-column: 1 / 3;
+    grid-row: 3;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding: 10px;
+}
+
+
+
+/**
+    Add person/group MODAL
+**/
 #modal-meet {
     position: fixed;
     display: none;
@@ -234,6 +328,7 @@ body {
     grid-template-rows: 1fr 1fr 2fr 1fr;
 }
 
+
 .modal-title-meet {
     grid-row: 1;
     grid-column: 1;
@@ -241,18 +336,44 @@ body {
     vertical-align: middle;
     line-height: 50px;
     height: 50px;
-    font-size: 30px;
-    padding-left: 30px;
+    width: auto;
+    font-size: 25px;
     border-width: 1px;
     border-bottom: solid;
     border-color: black;
+    display: grid;
+    grid-template-columns: 24fr 1fr;
+    grid-template-rows: 1fr;
+    
 }
 
+.modal-title{
+    grid-column: 1;
+    grid-row: 1;
+}
+
+
+.close-button{
+    grid-column: 2;
+    grid-row: 1;
+    font-family: Helvetica, Georgia, 'Times New Roman';
+    font-size: 15px;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    border: none;
+}
 
 .modal-message-meet {
     grid-row: 2;
     grid-column: 1;
+    margin-top: 5px;
+    margin-bottom: 5px;
     
+}
+
+.modal-name-person-or-group {
+    font-weight: bold;
 }
 
 .message-optional{
@@ -283,7 +404,7 @@ body {
 .message-buttons-format {
     border-radius: 10px;
     border: 0px none;
-    margin: 3px;
+    margin-top: 5px;
     font-size: 14px;
     background-color: #1d74e5;
     color: white;
