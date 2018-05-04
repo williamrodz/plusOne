@@ -133,6 +133,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: repeat(5, 180px);
     margin: 3px;
+    overflow-x: auto;
     
 }
 
@@ -148,6 +149,7 @@ body {
     text-align: center;
     margin: 3px;
     font-family: Helvetica, Georgia, 'Times New Roman';
+    min-width: 272px;
 }
 
 .name {
@@ -236,6 +238,7 @@ body {
     margin: 3px;
     font-family: Helvetica, Georgia, 'Times New Roman';
     border: white 1px solid;
+    min-width: 272px;    
 }
 
 .group-name {
