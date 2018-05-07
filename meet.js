@@ -51,174 +51,6 @@ var currentAddButton = null;
  * multiple hobbies, and multiple professional interests
  */
 
-var groups = [
-
-    {
-        name: "Babysitting",
-        language: "English",
-        nationalities: ["American", "Canadian", "Chinese", "Korean"],
-        hobbies: ["Listening to music", "Reading", "Swimming"],
-        professionalInterests: ["Playing musical instruments", "Psychology"],
-        description: "Join this group if you're interested in doing babysitting or need a babysitter."
-
-    },
-    {
-        name: "Korean friends",
-        language: "Korean",
-        nationalities: ["Korean", "Japanese"],
-        hobbies: ["Reading", "Molecular Biology"],
-        professionalInterests: ["Playing musical instruments", "Psychology", "Molecular Biology"],
-        description: "Join this group if you want to have some Korean time and forget about English for a while."
-    },
-    {
-        name: "A la mexicana",
-        language: "Spanish",
-        nationalities: ["Mexican"],
-        hobbies: ["Reading", "Talk about politics"],
-        professionalInterests: ["Playing musical instruments", "Politics"],
-        description: "If you want to discuss about politics and current events happening in Mexico, you're welcome to this group."
-    },
-    {
-        name: "English club",
-        language: "English",
-        nationalities: ["American", "Japanese", "Korean", "Mexican"],
-        hobbies: ["Reading"],
-        professionalInterests: ["Computer science", "Finance"],
-        description: "Improve your English by sharing your thoughts with other members of this group. Every week a different topic for discussion."
-    }
-
-];
-
-var people = [
-    {
-        name: "Alicia Smith",
-        age: 28,
-        origin: {
-            nationality: ["American"],
-            country: "US",
-            city: "Atlanta",
-            stateOrRegion: "GA"
-        },
-        hobbies: ["Reading", "Swimming"],
-        professionalInterests: ["Computer science"],
-        languages: ["English"],
-        description: "Enjoy exploring local museums and learning new languages"
-    },
-    {
-        name: "Ben Chen",
-        age: 30,
-        origin: {
-            nationality: ["American"],
-            country: "US",
-            city: "New York",
-            stateOrRegion: "NY"
-        },
-        hobbies: ["Reading", "Swimming"],
-        professionalInterests: ["Computer science"],
-        languages: ["English", "Chinese"],
-        description: "Entrepreneur in education technology"
-    },
-    {
-        name: "Carla Gomez",
-        age: 29,
-        origin: {
-            nationality: ["Canadian", "Mexican"],
-            country: "Canada",
-            city: "Montreal",
-            stateOrRegion: "QB"
-        },
-        hobbies: ["Reading", "Swimming"],
-        professionalInterests: ["Psychology"],
-        languages: ["Spanish", "English"],
-        description: "Love visiting foreign countries and learning about other cultures"
-    },
-    {
-        name: "Carles Mentuy",
-        age: 30,
-        origin: {
-            nationality: ["Spanish"],
-            country: "Spain",
-            city: "Barcelona",
-            stateOrRegion: "Catalonia"
-        },
-        hobbies: ["Swimming"],
-        professionalInterests: ["Reading"],
-        languages: ["Spanish", "Catalan"],
-        description: "Love reading Arturo Perez Reverte"
-    },
-    {
-        name: "Eunjin Koo",
-        age: 30,
-        origin: {
-            nationality: ["Korean"],
-            country: "Korea",
-            city: "Seoul",
-            stateOrRegion: "SCA" //Seoul Capital Area
-        },
-        hobbies: ["Reading", "Swimming"],
-        professionalInterests: ["Computer science"],
-        languages: ["Korean", "English"],
-        description: "Love author food and I enjoy trying new restaurants during the weekends"
-    },
-    {
-        name: "John Smith",
-        age: 39,
-        origin: {
-            nationality: ["American"],
-            country: "US",
-            city: "Boston",
-            stateOrRegion: "MA"
-        },
-        hobbies: ["Reading", "Swimming", "Entrepreneur", "Listening to music"],
-        professionalInterests: ["Computer science", "Playing musical instruments"],
-        languages: ["English"],
-        description: "Love playing piano"
-    },
-    {
-        name: "Jorge Ramirez",
-        age: 29,
-        origin: {
-            nationality: ["Mexican", "American"],
-            country: "Mexico",
-            city: "Mexico City",
-            stateOrRegion: "CDMX"
-        },
-        hobbies: ["Reading", "Swimming"],
-        professionalInterests: ["Computer science"],
-        languages: ["Spanish"],
-        description: "Love reading latin american writers like Alberto Fuguet and Gabriel Garcia Marquez"
-    },
-    {
-        name: "Aya Akano",
-        age: 32,
-        origin: {
-            nationality: ["Japanese"],
-            country: "Japan",
-            city: "Tokio",
-            stateOrRegion: "TK"
-        },
-        hobbies: ["Reading", "Swimming", "Cooking"],
-        professionalInterests: ["Molecular Biology"],
-        languages: ["Japanese", "Korean"],
-        description: "Love doing research about molecular biology"
-    },
-    {
-        name: "Xua Hu",
-        age: 40,
-        origin: {
-            nationality: ["Chinese"],
-            country: "China",
-            city: "Beijin",
-            stateOrRegion: "BJ"
-        },
-        hobbies: ["Reading", "Cooking"],
-        professionalInterests: ["Computer science"],
-        languages: ["Chinese", "English"],
-        description: "Love doing research about Systems Thinking"
-    }
-
-];
-
 
 //When document has fully loaded
 document.addEventListener("DOMContentLoaded", function (event) {
@@ -250,8 +82,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
             element.checked = false;
         });
 
-        addListOfPeople(people);
-        addListOfGroups(groups);
+        addListOfPeople(allConnections);
+        addListOfGroups(allGroups);
         selectPersonsAndGroupsByDefault();
         showInitialNumberOfPersonsToConnectWith();
     });
@@ -282,7 +114,7 @@ function createFilters() {
     let languageArray = [];
 
     //Extract filter values from people
-    people.forEach((person, numPerson) => {
+    allConnections.forEach((person, numPerson) => {
         //Nationalities
         let nationalityArrayPerson = person.origin.nationality;
 
@@ -323,7 +155,7 @@ function createFilters() {
 
 
     //Extract filter values from groups
-    groups.forEach((group, numGroup) => {
+    allGroups.forEach((group, numGroup) => {
         //Nationalities
         let nationalityArrayGroup = group.nationalities;
 
@@ -520,11 +352,11 @@ function filterPeople() {
         return;
     }
 
-    let filteredPeople = people;
+    let filteredPeople = allConnections;
 
     if (!areFiltersEmpty()) {
         //Filter people
-        filteredPeople = people.filter(isPersonInFilters);
+        filteredPeople = allConnections.filter(isPersonInFilters);
     }
 
     addListOfPeople(filteredPeople);
@@ -538,11 +370,11 @@ function filterGroups() {
         return;
     }
 
-    let filteredGroups = groups;
+    let filteredGroups = allGroups;
 
     if (!areFiltersEmpty()) {
         //Filter groups
-        filteredGroups = groups.filter(isGroupInFilters);
+        filteredGroups = allGroups.filter(isGroupInFilters);
     }
 
     addListOfGroups(filteredGroups);
@@ -656,7 +488,7 @@ function addListOfPeople(list) {
     peopleGroupsList.innerHTML = "";
 
     if (!list) {
-        list = people;
+        list = allConnections;
     }
 
     for (let numPerson = 0; numPerson < list.length; numPerson++) {
@@ -742,7 +574,7 @@ function addListOfGroups(list) {
     //peopleList.innerHTML = "";
 
     if (!list) {
-        list = groups;
+        list = allGroups;
     }
 
     for (let numGroup = 0; numGroup < list.length; numGroup++) {
@@ -795,7 +627,7 @@ function addListOfGroups(list) {
 
 function showNumConnections() {
     let numConnectionsSpan = get(".num-of-connections");
-    let numConnections = myConnections.length + myConnectionsGroups.length;
+    let numConnections = myConnections.length + myGroups.length;
     if (numConnections === 1) {
         numConnectionsSpan.innerHTML = "Currently you have 1 connection";
     } else if (numConnections > 1) {
@@ -811,7 +643,7 @@ function showInitialNumberOfPersonsToConnectWith() {
 
     let matchingCriteria = get(".matching-criteria");
 
-    let numPeople = people.length - myConnections.length;
+    let numPeople = allConnections.length - myConnections.length;
 
     let legend = "";
 
@@ -823,7 +655,7 @@ function showInitialNumberOfPersonsToConnectWith() {
         legend = "You have 0 people and ";
     }
 
-    let numGroups = groups.length;
+    let numGroups = allGroups.length;
 
     if (numGroups === 1) {
         legend += "1 group to connect with";
@@ -954,15 +786,23 @@ function displayMessage(title, message, current_document) {
 
     let btnSend = get("#btnSend");
     btnSend.addEventListener("click", (e) => {
-        var connections = JSON.parse(sessionStorage.getItem("my_connections"));
-        connections.push(currentPerson);
-        sessionStorage.setItem("my_connections", JSON.stringify(connections));
-        
-        let modalMeet = get("#modal-meet");
-        modalMeet.style.display = "none";
-
-        //Change button + to Added
-        showConnectionAdded();
+        if (currentPerson != null) {
+            var connections = JSON.parse(sessionStorage.getItem("my_connections"));
+            connections.push(currentPerson);
+            sessionStorage.setItem("my_connections", JSON.stringify(connections));
+            
+            let modalMeet = get("#modal-meet");
+            modalMeet.style.display = "none";
+            //Change button + to Added
+            showConnectionAdded();
+        } else {
+            var groups = JSON.parse(sessionStorage.getItem("my_groups"));
+            groups.push(currentGroup);
+            sessionStorage.setItem("my_groups", JSON.stringify(groups));
+            
+            let modalMeet = get("#modal-meet");
+            modalMeet.style.display = "none";
+        }
 
         showNumConnections();
 
