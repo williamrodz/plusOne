@@ -79,7 +79,7 @@ var eunjinKooConnection = {
     origin: {
         nationality: ["Korean"],
         country: "Korea",
-        city: "Seul",
+        city: "Seoul",
         stateOrRegion: "SL"
     },
     hobbies: ["Reading", "Swimming"],
@@ -129,7 +129,7 @@ var ayaAkanoConnection = {
     origin: {
         nationality: ["Japanese"],
         country: "Japan",
-        city: "Tokio",
+        city: "Tokyo",
         stateOrRegion: "TK"
     },
     hobbies: ["Reading", "Swimming", "Cooking"],
@@ -145,7 +145,7 @@ var xuaHuConnection = {
     origin: {
         nationality: ["Chinese"],
         country: "China",
-        city: "Beijin",
+        city: "Beijing",
         stateOrRegion: "BJ"
     },
     hobbies: ["Reading", "Cooking"],
