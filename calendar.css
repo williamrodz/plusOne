@@ -296,3 +296,16 @@ li b{
 }
 
 
+.modal-close {
+    float: right;
+    padding-right: 5px;
+    font-weight: bold;
+    color: #b8b9bc;
+}
+
+.modal-close:hover {
+    color: black;
+    cursor: pointer;
+}
+
+
