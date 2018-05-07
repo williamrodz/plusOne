@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="index.css">
 
   <!-- JavaScript files -->
+  <script src="util.js"></script>
+  <script src="index.js"></script>
+  <script src="sharedItems.js"></script>
   <script src="groups.js"></script>
 
 </head>
@@ -19,7 +22,7 @@
     <a href="meet.html" class="menuItem"><div>Connect</div></a>
     <a href="calendar.html" class="menuItem"><div >Events</div></a>
     <a href="groups.html" class="menuItem currentMenuItem"><div >Groups</div></a>
-  </div>    
+  </div>   
 
   <div class="group-buttons-row" id="groupButtonsField">
   </div>
@@ -31,29 +34,7 @@
   <div id="messageBoardAndSendBar hidden">
     <div id="messageBoard" class="message-field">
       <h2>Message board</h2>
-      <div class="container">
-        <img src="avatar.png" alt="Avatar" style="width:100%;">
-        <p id="message1">Hello. How are you today?</p>
-        <span class="time-right">11:00</span>
-      </div>
 
-      <div class="container darker">
-        <img src="doraAvatar.png" alt="Avatar" class="right" style="width:100%;">
-        <p id="message2">Hey! I'm fine. Thanks for asking!</p>
-        <span class="time-left">11:01</span>
-      </div>
-
-      <div class="container">
-        <img src="funnyGuyAvatar.png" alt="Avatar" style="width:100%;">
-        <p id="message3">Sweet! So, what do you wanna do today?</p>
-        <span class="time-right">11:02</span>
-      </div>
-
-      <div class="container darker">
-        <img src="catAvatar.png" alt="Avatar" style="width:100%;">
-        <p id="message4">Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-        <span class="time-left">11:05</span>
-      </div>
     </div>
     <div class="message-field sendMessageBar">
       <input id="inputField" class="inputField" type="text" name="FirstName" placeholder="Type your message here...">

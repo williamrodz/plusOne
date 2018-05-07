@@ -1,6 +1,6 @@
-var eventBeingDisplayed = null;
-var connectionBeingDisplayed = null;
 
+var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+var activeGroupUID = null;
 Util.events(document, {
 	// Final initalization entry point: the Javascript code inside this block
 	// runs at the end of start-up when the DOM is ready
@@ -11,8 +11,6 @@ Util.events(document, {
 				e.preventDefault()
 				e.stopPropagation()
 				Util.one("#modal").style.display = "none";
-				eventBeingDisplayed = null;
-				connectionBeingDisplayed = null;
 			}
 		})
 
@@ -40,10 +38,10 @@ Util.events(document, {
 			event.addEventListener("click", function(e){
 				e.preventDefault()
 				e.stopPropagation()
-				eventBeingDisplayed = event;
 				displayEvent(event, document)
 			})
 		})
+
 		var myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
 		for (var index=0; index < myConnections.length; index++){
 			var connection = myConnections[index];
@@ -57,13 +55,29 @@ Util.events(document, {
 				displayConnection(connection, document)
 			})
 		})
+
+		var myGroups = JSON.parse(sessionStorage.getItem("my_groups"));
+		for (var index=0; index < myGroups.length; index++){
+			var group = myGroups[index];
+			addGroupToDisplay(group);
+		}
+
+		Util.all(".my-group").forEach(function(group) {
+			group.addEventListener("click", function(e){
+				e.preventDefault()
+				e.stopPropagation()
+				displayGroup(group, document)
+			})
+		})
 	}
 })
 
 
-function displayMessage(message, current_document) {
+function displayMessage(htmlMessage, current_document) {
 	var modal = Util.one("#modal")
 	modal.style.display = "block";
+
+	var message = getMessageFromHTMLMessage(htmlMessage)
 
 	modal.innerHTML = ""
 
@@ -71,7 +85,7 @@ function displayMessage(message, current_document) {
 
 	modal_display.classList.add("modal-display-message")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith<span class="modal-close">&times;</span></div><div class="modal-message">Hi how\'s it going? Just wanted to meet up for coffee before class</div>'
+	modal_display.innerHTML = '<div class="modal-title">' + message.from + '<span class="modal-close">&times;</span></div><div class="modal-message">' + message.content + '</div>'
 
 	modal.appendChild(modal_display)
 
@@ -79,8 +93,6 @@ function displayMessage(message, current_document) {
 		e.preventDefault()
 		e.stopPropagation()
 		Util.one("#modal").style.display = "none";
-		eventBeingDisplayed = null;
-		connectionBeingDisplayed = null;
 	})
 }
 
@@ -124,8 +136,6 @@ function displayConnection(htmlConnection, current_document) {
 		e.preventDefault()
 		e.stopPropagation()
 		Util.one("#modal").style.display = "none";
-		eventBeingDisplayed = null;
-		connectionBeingDisplayed = null;
 	})
 }
 
@@ -141,7 +151,21 @@ function displayEvent(htmlEvent, current_document) {
 
 	modal_display.classList.add("modal-display-event")
 
-	modal_display.innerHTML = '<div class="modal-title">' + event.title + '<span class="modal-close">&times;</span></div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">' + event.start_time + '-' + event.end_time + '<br>' + event.location + '</div><div class="modal-event-remove">Remove</div>'
+	var dateDisplay = document.createElement("div")
+	dateDisplay.classList.add("modal-left-side-event")
+
+	var dateDisplayMonthBar = document.createElement("div")
+	dateDisplayMonthBar.classList.add("my-event-date-month-modal")
+	dateDisplayMonthBar.innerHTML = months[event.month-1]
+	dateDisplay.appendChild(dateDisplayMonthBar)
+
+	var dateDisplayDayBar = document.createElement("div")
+	dateDisplayDayBar.classList.add("my-event-date-day-modal")
+	dateDisplayDayBar.innerHTML = event.day
+	dateDisplay.appendChild(dateDisplayDayBar)
+
+	modal_display.innerHTML = '<div class="modal-title">' + event.title + '<span class="modal-close">&times;</span></div><div class="modal-right-side-event">' + event.start_time + '-' + event.end_time + '<br>' + event.location + '</div><div class="modal-event-remove">Remove</div>'
+	modal_display.appendChild(dateDisplay)
 
 	modal.appendChild(modal_display)
 
@@ -149,8 +173,6 @@ function displayEvent(htmlEvent, current_document) {
 		e.preventDefault()
 		e.stopPropagation()
 		Util.one("#modal").style.display = "none";
-		eventBeingDisplayed = null;
-		connectionBeingDisplayed = null;
 	})
 
 	Util.one(".modal-event-remove").addEventListener("click", function(e){
@@ -158,8 +180,39 @@ function displayEvent(htmlEvent, current_document) {
 		e.stopPropagation()
 		removeEvent(htmlEvent)
 		Util.one("#modal").style.display = "none";
-		eventBeingDisplayed = null;
-		connectionBeingDisplayed = null;
+	})
+}
+
+function displayGroup(htmlGroup, current_document) {
+	var modal = Util.one("#modal")
+	modal.style.display = "block";
+
+	modal.innerHTML = ""
+
+	var group = getGroupFromHTMLGroup(htmlGroup)
+
+	var modal_display = current_document.createElement('div')
+
+	modal_display.classList.add("modal-display-group")
+
+	modal_display.innerHTML = '<div class="modal-title">' + group.name + '<span class="modal-close">&times;</span></div><div class="modal-group-description">' + group.description + '</div><div class="modal-group-chat">Chat</div>'
+
+	modal.appendChild(modal_display)
+
+	activeGroupUID = group.uid
+
+	Util.one(".modal-close").addEventListener("click", function(e){
+		e.preventDefault()
+		e.stopPropagation()
+		Util.one("#modal").style.display = "none";
+	})
+
+	Util.one(".modal-group-chat").addEventListener("click", function(e){
+		e.preventDefault()
+		e.stopPropagation()
+		Util.one("#modal").style.display = "none";
+		sessionStorage.setItem("active_chat_uid", activeGroupUID);
+		window.location.href = "./groups.html"
 	})
 }
 
@@ -183,6 +236,8 @@ function addMessageToDisplay(message) {
 	messageContent.classList.add("my-message-content")
 	messageContent.innerHTML = message.content
 	display_message.appendChild(messageContent)
+
+	display_message.id = message.uid
 
 	messages.appendChild(display_message)
 }
@@ -216,10 +271,20 @@ function addEventToDisplay(event) {
 	display_event.classList.add("my-item")
 	display_event.classList.add("my-event")
 	
-	var image = document.createElement("img")
-	image.classList.add("my-event-image")
-	image.src = "event.png"
-	display_event.appendChild(image)
+	var dateDisplay = document.createElement("div")
+	dateDisplay.classList.add("my-event-date")
+
+	var dateDisplayMonthBar = document.createElement("div")
+	dateDisplayMonthBar.classList.add("my-event-date-month")
+	dateDisplayMonthBar.innerHTML = months[event.month-1]
+	dateDisplay.appendChild(dateDisplayMonthBar)
+
+	var dateDisplayDayBar = document.createElement("div")
+	dateDisplayDayBar.classList.add("my-event-date-day")
+	dateDisplayDayBar.innerHTML = event.day
+	dateDisplay.appendChild(dateDisplayDayBar)
+	
+	display_event.appendChild(dateDisplay)
 
 	var eventInformation = document.createElement("div")
 	eventInformation.classList.add("my-event-information")
@@ -234,8 +299,38 @@ function addEventToDisplay(event) {
 
 }
 
+function addGroupToDisplay(group) {
+	var groups = Util.one("#my-groups").children[1];
+	var display_group = document.createElement("div")
+	display_group.classList.add("my-item")
+	display_group.classList.add("my-group")
+
+	var groupTitle = document.createElement("div")
+	groupTitle.classList.add("my-group-title")
+	groupTitle.innerHTML = group.name
+	
+	display_group.appendChild(groupTitle)
+
+	display_group.id = group.uid
+
+	groups.appendChild(display_group)
+}
+
+function getMessageFromHTMLMessage(htmlMessage) {
+	var uid = htmlMessage.id;
+	var myMessages = JSON.parse(sessionStorage.getItem("my_messages"));
+	for (var index = 0; index < myMessages.length; index ++) {
+		var message = myMessages[index]
+		if (message.uid == uid) {
+			console.log(message)
+			return message
+		}
+	}
+}
+
 function getConnectionFromHTMLConnection(htmlConnection) {
 	var uid = htmlConnection.id;
+	var myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
 	for (var index = 0; index < myConnections.length; index ++) {
 		var connection = myConnections[index]
 		if (connection.uid == uid) {
@@ -247,6 +342,7 @@ function getConnectionFromHTMLConnection(htmlConnection) {
 
 function getEventFromHTMLEvent(htmlEvent) {
 	var uid = htmlEvent.id;
+	var myEvents = JSON.parse(sessionStorage.getItem("my_events"));
 	for (var index = 0; index < myEvents.length; index ++) {
 		var event = myEvents[index]
 		if (event.uid == uid) {
@@ -255,6 +351,16 @@ function getEventFromHTMLEvent(htmlEvent) {
 	}
 }
 
+function getGroupFromHTMLGroup(htmlGroup) {
+	var uid = htmlGroup.id;
+	var myGroups = JSON.parse(sessionStorage.getItem("my_groups"));
+	for (var index = 0; index < myGroups.length; index ++) {
+		var group = myGroups[index]
+		if (group.uid == uid) {
+			return group
+		}
+	}
+}
 
 
 

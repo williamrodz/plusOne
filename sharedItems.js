@@ -1,11 +1,13 @@
 var allConnections = [];
 var allEvents = [];
+var allGroups = [];
 
 var myConnections = [];
-var myConnectionsGroups = [];
 var myEvents = [];
 var myMessages = [];
+var myGroups = [];
 
+var userImages = ["funnyGuyAvatar.png", "doraAvatar.png", "avatar.png", "catAvatar.png", "penguinAvatar.png"];
 
 var aliciaSmithConnection = {
         name: "Alicia Smith",
@@ -20,6 +22,7 @@ var aliciaSmithConnection = {
         professionalInterests: ["Computer science"],
         languages: ["English"],
         description: "Enjoy exploring local museums and learning new languages",
+        group: false,
         uid: "68C70338-C568-44F2-891D-A8BC9ECF77F8"
     };
 
@@ -51,6 +54,7 @@ var carlaGomezConnection = {
         professionalInterests: ["Psychology"],
         languages: ["Spanish", "English"],
         description: "Love visiting foreign countries and learning about other cultures",
+        group: false,
         uid: "AFB95176-C0C5-4A9D-90ED-15B831EFB378"
     };
 var jorgeRamirezConnection = {
@@ -66,6 +70,7 @@ var jorgeRamirezConnection = {
         professionalInterests: ["Computer science"],
         languages: ["Spanish"],
         description: "Love reading latin american writers like Alberto Fuguet and Gabriel Garcia Marquez",
+        group: false,
         uid: "B058573F-F202-48CF-A90E-9B60E1C42941"
     };
 var eunjinKooConnection = {
@@ -81,14 +86,86 @@ var eunjinKooConnection = {
         professionalInterests: ["Computer science"],
         languages: ["Korean", "English"],
         description: "Love author food and I enjoy trying new restaurants during the weekends",
+        group: false,
         uid: "98D4E404-4F0D-4CEE-89FF-69DFBA8A52B4"
     };
+var carlesMentuyConnection = {
+        name: "Carles Mentuy",
+        age: 30,
+        origin: {
+            nationality: ["Spanish"],
+            country: "Spain",
+            city: "Barcelona",
+            stateOrRegion: "Catalonia"
+        },
+        hobbies: ["Swimming"],
+        professionalInterests: ["Reading"],
+        languages: ["Spanish", "Catalan"],
+        description: "Love reading Arturo Perez Reverte",
+        group: false,
+        uid: "E3F6B164-F4B9-4E35-B6C7-FFB55F761A08"
+    }
+
+var johnSmithConnection = {
+        name: "John Smith",
+        age: 39,
+        origin: {
+            nationality: ["American"],
+            country: "US",
+            city: "Boston",
+            stateOrRegion: "MA"
+        },
+        hobbies: ["Reading", "Swimming", "Entrepreneur", "Listening to music"],
+        professionalInterests: ["Computer science", "Playing musical instruments"],
+        languages: ["English"],
+        description: "Love playing piano",
+        group: false,
+        uid: "5F78EB84-18AA-40F4-AB14-5A68D05BA9F1"
+    }
+
+var ayaAkanoConnection = {
+        name: "Aya Akano",
+        age: 32,
+        origin: {
+            nationality: ["Japanese"],
+            country: "Japan",
+            city: "Tokio",
+            stateOrRegion: "TK"
+        },
+        hobbies: ["Reading", "Swimming", "Cooking"],
+        professionalInterests: ["Molecular Biology"],
+        languages: ["Japanese", "Korean"],
+        description: "Love doing research about molecular biology",
+        group: false,
+        uid: "39B2AC22-DA2F-4B52-891E-9132DA1A6EE4"
+    }
+var xuaHuConnection = {
+        name: "Xua Hu",
+        age: 40,
+        origin: {
+            nationality: ["Chinese"],
+            country: "China",
+            city: "Beijin",
+            stateOrRegion: "BJ"
+        },
+        hobbies: ["Reading", "Cooking"],
+        professionalInterests: ["Computer science"],
+        languages: ["Chinese", "English"],
+        description: "Love doing research about Systems Thinking",
+        group: false,
+        uid: "DD2B5A24-9C3B-4092-A35B-AC641E2AF3E4"
+    }
 
 allConnections.push(aliciaSmithConnection);
 allConnections.push(benChenConnection);
 allConnections.push(carlaGomezConnection);
 allConnections.push(jorgeRamirezConnection);
 allConnections.push(eunjinKooConnection);
+allConnections.push(carlesMentuyConnection);
+allConnections.push(johnSmithConnection);
+allConnections.push(ayaAkanoConnection);
+allConnections.push(xuaHuConnection);
+
 
 myConnections.push(aliciaSmithConnection);
 myConnections.push(benChenConnection);
@@ -181,11 +258,91 @@ myEvents.push(event1);
 myEvents.push(event2);
 myEvents.push(event3);
 myEvents.push(event4);
-var jsonMyEvents = JSON.stringify(myEvents);
-sessionStorage.setItem("my_events", jsonMyEvents);
+//var jsonMyEvents = JSON.stringify(myEvents);
+//sessionStorage.setItem("my_events", jsonMyEvents);
 if (sessionStorage.getItem("my_events") == null) {
     var jsonMyEvents = JSON.stringify(myEvents);
     sessionStorage.setItem("my_events", jsonMyEvents);
 }
 
+var babysittingGroup = {
+    name: "Babysitting",
+    language: "English",
+    nationalities: ["American", "Canadian", "Chinese", "Korean"],
+    hobbies: ["Listening to music", "Reading", "Swimming"],
+    professionalInterests: ["Playing musical instruments", "Psychology"],
+    description: "Join this group if you're interested in doing babysitting or need a babysitter.",
+    messages: [],
+    group: true,
+    uid: "869AC5FE-EA80-4C4C-A173-74F3E2A7DE40"
+}
+
+var koreanFriendsGroup = {
+    name: "Korean friends",
+    language: "Korean",
+    nationalities: ["Korean", "Japanese"],
+    hobbies: ["Reading", "Molecular Biology"],
+    professionalInterests: ["Playing musical instruments", "Psychology", "Molecular Biology"],
+    description: "Join this group if you want to have some Korean time and forget about English for a while.",
+    messages: [],
+    group: true,
+    uid: "8DA8375C-65AC-4B69-8233-A716BEDA984D"
+}
+
+var aLaMexicanaGroup = {
+    name: "A la mexicana",
+    language: "Spanish",
+    nationalities: ["Mexican"],
+    hobbies: ["Reading", "Talk about politics"],
+    professionalInterests: ["Playing musical instruments", "Politics"],
+    description: "If you want to discuss about politics and current events happening in Mexico, you're welcome to this group.",
+    messages: [{from: 1, content: "Anyone planning on going to the Videgaray talk?"}, 
+               {from: 2, content: "I think it got cancelled"},
+               {from: 1, content: "Oh, bummer :("}],
+    group: true,
+    uid: "139B35E9-2BBF-4B8F-A0EA-A13C3C4F205D"
+}
+
+var englishClubGroup = {
+    name: "English club",
+    language: "English",
+    nationalities: ["American", "Japanese", "Korean", "Mexican"],
+    hobbies: ["Reading"],
+    professionalInterests: ["Computer science", "Finance"],
+    description: "Improve your English by sharing your thoughts with other members of this group. Every week a different topic for discussion.",
+    messages: [{from: 1, content: "Hey guys, when is the next class?"}, 
+               {from: 2, content: "I think we have one on Wednesday at 3"}],
+    group: true,
+    uid: "F231CA7E-531C-41AD-9054-5A4377202686"
+}
+
+var readingGroup = {
+    name: "Reading",
+    language: "English",
+    nationalities: ["American", "Japanese", "Korean", "Mexican"],
+    hobbies: ["Reading"],
+    professionalInterests: ["Computer science", "Finance", "Psychology"],
+    description: "Love reading books? Join our group!",
+    messages: [{from: 1, content: "Any book recommendations?"}, 
+               {from: 2, content: "I'm reading 'Guantanamo Diary'. I really recommend it!"},
+               {from: 0, content: "That one is great! I also read 'All the light that you cannot see'. Loved it."},
+               {from: 3, content: "Wow, love the book worm activity ;)"}],
+    group: true,
+    uid: "7807265D-7430-440B-B6FC-BE759E832B9E"
+}
+
+allGroups.push(readingGroup)
+allGroups.push(babysittingGroup)
+allGroups.push(koreanFriendsGroup)
+allGroups.push(aLaMexicanaGroup)
+allGroups.push(englishClubGroup)
+
+myGroups.push(englishClubGroup)
+myGroups.push(readingGroup)
+var jsonMyGroups = JSON.stringify(myGroups);
+sessionStorage.setItem("my_groups", jsonMyGroups);
+if (sessionStorage.getItem("my_groups") == null) {
+    var jsonMyGroups = JSON.stringify(myGroups);
+    sessionStorage.setItem("my_groups", jsonMyGroups);
+}
 
