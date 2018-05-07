@@ -62,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function (event) {
     addListOfPeople();
     //Add initial list of groups
     addListOfGroups();
-
     //Show how many people it is possible to connect with
     showInitialNumberOfPersonsToConnectWith();
 
@@ -320,6 +319,8 @@ function createFilters() {
                 }
 
             });
+
+
             //Add input to its corresponding label
             optionLabel.insertBefore(optionInput, optionLabel.firstChild);
             //Add label to filter options div
@@ -501,7 +502,7 @@ function addListOfPeople(list) {
 
         let nameSpan = document.createElement("span");
         nameSpan.classList.add("name");
-        nameSpan.innerHTML = person.name;
+        nameSpan.innerHTML = person.name + ", <span class='age'>" + person.age + "</span>";
 
         personDiv.appendChild(nameSpan);
 
@@ -511,16 +512,19 @@ function addListOfPeople(list) {
 
         personDiv.appendChild(originSpan);
 
-        let ageSpan = document.createElement("span");
-        ageSpan.classList.add("age");
-        ageSpan.innerHTML = "&emsp;&emsp;&emsp;&emsp;" + person.age;
+        //let ageSpan = document.createElement("span");
+        //ageSpan.classList.add("age");
+        //ageSpan.innerHTML = "&emsp;&emsp;&emsp;&emsp;" + person.age;
 
-        personDiv.appendChild(ageSpan);
+        //personDiv.appendChild(ageSpan);
 
         let addButtonDiv = document.createElement("div");
         addButtonDiv.classList.add("add-friend-div");
 
         let personAlreadyInConnections = false;
+
+        var myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
+
         //See if person is already in myConnections
         for (let numPerson = 0; numPerson < myConnections.length; numPerson++) {
             let connection = myConnections[numPerson];
@@ -530,10 +534,9 @@ function addListOfPeople(list) {
             }
         }
 
-
         let addButton = document.createElement("button");
         if (!personAlreadyInConnections) {
-            addButton.classList.add("add-friend");
+            addButton.classList.add("add-contact");
             addButton.innerHTML = "+";
             addButton.title = "Add this person to my connections";
 
@@ -542,7 +545,7 @@ function addListOfPeople(list) {
                 currentPerson = person;
                 displayMessage("Add person", "Would you like to connect with <span class='modal-name-person-or-group'>" + person.name + "</span>?", document);
             });
-        }else{
+        } else {
             addButton.classList.add("added-friend");
             addButton.innerHTML = "Added";
             addButton.title = "Already connected with this person";
@@ -600,15 +603,35 @@ function addListOfGroups(list) {
         let addButtonDiv = document.createElement("div");
         addButtonDiv.classList.add("add-group-div");
 
-        let addButton = document.createElement("button");
-        addButton.classList.add("add-group");
-        addButton.innerHTML = "+";
-        addButton.title = "Add this group to my connections";
+        let groupAlreadyInConnections = false;
 
-        addButton.addEventListener("click", (e) => {
-            currentGroup = group;
-            displayMessage("Add group", "Would you like to connect with group <span class='modal-name-person-or-group'>" + group.name + "</span>?", document);
-        });
+        var myGroups = JSON.parse(sessionStorage.getItem("my_groups"));
+        //See if group is already in myGroups
+        for (let numGroup = 0; numGroup < myGroups.length; numGroup++) {
+            let connection = myGroups[numGroup];
+            if (group.name == connection.name) {
+                groupAlreadyInConnections = true;
+                break;
+            }
+        }
+
+        let addButton = document.createElement("button");
+        if (!groupAlreadyInConnections) {
+            addButton.classList.add("add-contact");
+            addButton.innerHTML = "+";
+            addButton.title = "Add this group to my connections";
+
+            addButton.addEventListener("click", (e) => {
+                currentAddButton = e.target;
+                currentGroup = group;
+                currentPerson = null;
+                displayMessage("Add group", "Would you like to connect with group <span class='modal-name-person-or-group'>" + group.name + "</span>?", document);
+            });
+        } else {
+            addButton.classList.add("added-group");
+            addButton.innerHTML = "Added";
+            addButton.title = "Already connected with this group";
+        }
 
         addButtonDiv.appendChild(addButton);
 
@@ -627,7 +650,7 @@ function addListOfGroups(list) {
 
 function showNumConnections() {
     let numConnectionsSpan = get(".num-of-connections");
-    let numConnections = myConnections.length + myGroups.length;
+    let numConnections = myGroups.length + myGroups.length;
     if (numConnections === 1) {
         numConnectionsSpan.innerHTML = "Currently you have 1 connection";
     } else if (numConnections > 1) {
@@ -643,7 +666,7 @@ function showInitialNumberOfPersonsToConnectWith() {
 
     let matchingCriteria = get(".matching-criteria");
 
-    let numPeople = allConnections.length - myConnections.length;
+    let numPeople = allConnections.length - myGroups.length;
 
     let legend = "";
 
@@ -761,7 +784,7 @@ function displayMessage(title, message, current_document) {
 
         '<div class="modal-title-meet">' +
         '<span class="modal-title">' + title + '</span>' +
-        '<input type="button" class="close-button" value="x"></input>' +
+        '<span class="close-button">&times;</span>' +
         '</div>' +
 
         '<div class="modal-message-meet">' + message + '</div>' +
@@ -790,7 +813,7 @@ function displayMessage(title, message, current_document) {
             var connections = JSON.parse(sessionStorage.getItem("my_connections"));
             connections.push(currentPerson);
             sessionStorage.setItem("my_connections", JSON.stringify(connections));
-            
+
             let modalMeet = get("#modal-meet");
             modalMeet.style.display = "none";
             //Change button + to Added
@@ -799,9 +822,11 @@ function displayMessage(title, message, current_document) {
             var groups = JSON.parse(sessionStorage.getItem("my_groups"));
             groups.push(currentGroup);
             sessionStorage.setItem("my_groups", JSON.stringify(groups));
-            
+
             let modalMeet = get("#modal-meet");
             modalMeet.style.display = "none";
+            //Change button + to Added
+            showConnectionAdded();
         }
 
         showNumConnections();
@@ -817,7 +842,7 @@ function displayMessage(title, message, current_document) {
 
 function showConnectionAdded() {
     //Change add button to Added
-    currentAddButton.classList.remove("add-friend");
+    currentAddButton.classList.remove("add-contact");
     currentAddButton.classList.add("added-friend");
     currentAddButton.innerHTML = "Added";
     currentAddButton.setAttribute("disabled", "disabled");
