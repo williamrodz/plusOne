@@ -29,7 +29,7 @@ var filters = [
     //Default filter
     {
         title: "Look for",
-        values: ["Persons", "Groups"]
+        values: ["People", "Groups"]
     }
 
 ];
@@ -201,6 +201,20 @@ var people = [
         professionalInterests: ["Molecular Biology"],
         languages: ["Japanese", "Korean"],
         description: "Love doing research about molecular biology"
+    },
+    {
+        name: "Xua Hu",
+        age: 40,
+        origin: {
+            nationality: ["Chinese"],
+            country: "China",
+            city: "Beijin",
+            stateOrRegion: "BJ"
+        },
+        hobbies: ["Reading", "Cooking"],
+        professionalInterests: ["Computer science"],
+        languages: ["Chinese", "English"],
+        description: "Love doing research about Systems Thinking"
     }
 
 ];
@@ -426,7 +440,7 @@ function createFilters() {
                         break;
                     case "Look for":
                         switch (optionValue) {
-                            case "Persons":
+                            case "People":
                                 lookForPersons = isChecked;
                                 if (!isChecked) {
                                     let chkGroups = get("input[value='Groups']");
@@ -443,7 +457,7 @@ function createFilters() {
                             case "Groups":
                                 lookForGroups = isChecked;
                                 if (!isChecked) {
-                                    let chkPersons = get("input[value='Persons']");
+                                    let chkPersons = get("input[value='People']");
                                     chkPersons.checked = true;
                                     lookForPersons = true;
                                     //Remove groups
@@ -538,7 +552,7 @@ function filterGroups() {
 
 function selectPersonsAndGroupsByDefault() {
 
-    let chkPersons = get("input[value='Persons']");
+    let chkPersons = get("input[value='People']");
     chkPersons.checked = true;
 
     let chkGroups = get("input[value='Groups']");
@@ -804,9 +818,9 @@ function showInitialNumberOfPersonsToConnectWith() {
     if (numPeople === 1) {
         legend += "You have 1 person and ";
     } else if (numPeople > 1) {
-        legend = "You have " + numPeople + " persons and ";
+        legend = "You have " + numPeople + " people and ";
     } else {
-        legend = "You have 0 persons and ";
+        legend = "You have 0 people and ";
     }
 
     let numGroups = groups.length;
@@ -831,9 +845,9 @@ function updateNumPeople(numPeople, numGroups) {
     if (numPeople === 1) {
         legend += "1 person and ";
     } else if (numPeople > 1) {
-        legend = numPeople + " persons and ";
+        legend = numPeople + " people and ";
     } else {
-        legend = "0 persons and ";
+        legend = "0 people and ";
     }
 
     if (numGroups === 1) {
@@ -953,8 +967,6 @@ function displayMessage(title, message, current_document) {
         showNumConnections();
 
     });
-
-
 
     let btnBack = get("#btnBack");
     btnBack.addEventListener("click", (e) => {

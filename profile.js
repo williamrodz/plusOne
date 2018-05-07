@@ -84,9 +84,31 @@ function displayMessage(message, current_document) {
 	})
 }
 
-function displayConnection(connection, current_document) {
+function displayConnection(htmlConnection, current_document) {
 	var modal = Util.one("#modal")
 	modal.style.display = "block";
+
+	var connection = getConnectionFromHTMLConnection(htmlConnection)
+
+	var nationalities = ""
+
+	connection.origin.nationality.forEach(function(nationality) {
+		if (nationalities.length > 0) {
+			nationalities += ", " + nationality
+		} else {
+			nationalities += nationality
+		}
+	})
+
+	var hobbies = ""
+
+	connection.hobbies.forEach(function(hobby) {
+		if (hobbies.length > 0) {
+			hobbies += ", " + hobby
+		} else {
+			hobbies += hobby
+		}
+	});
 
 	modal.innerHTML = ""
 
@@ -94,7 +116,7 @@ function displayConnection(connection, current_document) {
 
 	modal_display.classList.add("modal-display-connection")
 
-	modal_display.innerHTML = '<div class="modal-title">Alicia Smith<span class="modal-close">&times;</span></div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Nationality: Mexican <br>Hobbies: hiking, running</div>'
+	modal_display.innerHTML = '<div class="modal-title">' + connection.name + '<span class="modal-close">&times;</span></div><img class="modal-left-side" src="placeholder_connection.png"/><div class="modal-right-side">Nationality: ' + nationalities + '<br>Hobbies: ' + hobbies + '</div>'
 
 	modal.appendChild(modal_display)
 
@@ -107,17 +129,19 @@ function displayConnection(connection, current_document) {
 	})
 }
 
-function displayEvent(event, current_document) {
+function displayEvent(htmlEvent, current_document) {
 	var modal = Util.one("#modal")
 	modal.style.display = "block";
 
 	modal.innerHTML = ""
 
+	var event = getEventFromHTMLEvent(htmlEvent)
+
 	var modal_display = current_document.createElement('div')
 
 	modal_display.classList.add("modal-display-event")
 
-	modal_display.innerHTML = '<div class="modal-title">English Class<span class="modal-close">&times;</span></div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">8:00AM-9:00AM<br>32-598</div><div class="modal-event-remove">Remove</div>'
+	modal_display.innerHTML = '<div class="modal-title">' + event.title + '<span class="modal-close">&times;</span></div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">' + event.start_time + '-' + event.end_time + '<br>' + event.location + '</div><div class="modal-event-remove">Remove</div>'
 
 	modal.appendChild(modal_display)
 
@@ -132,7 +156,7 @@ function displayEvent(event, current_document) {
 	Util.one(".modal-event-remove").addEventListener("click", function(e){
 		e.preventDefault()
 		e.stopPropagation()
-		removeEvent(event)
+		removeEvent(htmlEvent)
 		Util.one("#modal").style.display = "none";
 		eventBeingDisplayed = null;
 		connectionBeingDisplayed = null;
@@ -181,6 +205,8 @@ function addConnectionToDisplay(connection) {
 
 	display_connection.appendChild(connectionInformation)
 
+	display_connection.id = connection.uid
+
 	connections.appendChild(display_connection)
 }
 
@@ -202,6 +228,34 @@ function addEventToDisplay(event) {
 
 	display_event.appendChild(eventInformation)
 
+	display_event.id = event.uid
+
 	events.appendChild(display_event)
+
 }
+
+function getConnectionFromHTMLConnection(htmlConnection) {
+	var uid = htmlConnection.id;
+	for (var index = 0; index < myConnections.length; index ++) {
+		var connection = myConnections[index]
+		if (connection.uid == uid) {
+			console.log(connection)
+			return connection
+		}
+	}
+}
+
+function getEventFromHTMLEvent(htmlEvent) {
+	var uid = htmlEvent.id;
+	for (var index = 0; index < myEvents.length; index ++) {
+		var event = myEvents[index]
+		if (event.uid == uid) {
+			return event
+		}
+	}
+}
+
+
+
+
 

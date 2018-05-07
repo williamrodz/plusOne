@@ -83,6 +83,7 @@ var eunjinKooConnection = {
         description: "Love author food and I enjoy trying new restaurants during the weekends",
         uid: "98D4E404-4F0D-4CEE-89FF-69DFBA8A52B4"
     };
+
 allConnections.push(aliciaSmithConnection);
 allConnections.push(benChenConnection);
 allConnections.push(carlaGomezConnection);
@@ -92,8 +93,10 @@ allConnections.push(eunjinKooConnection);
 myConnections.push(aliciaSmithConnection);
 myConnections.push(benChenConnection);
 myConnections.push(carlaGomezConnection);
-var jsonMyConnections = JSON.stringify(myConnections);
-sessionStorage.setItem("my_connections", jsonMyConnections);
+
+//var jsonMyConnections = JSON.stringify(myConnections);
+//sessionStorage.setItem("my_connections", jsonMyConnections);
+
 if (sessionStorage.getItem("my_connections") == null) {
     var jsonMyConnections = JSON.stringify(myConnections);
     sessionStorage.setItem("my_connections", jsonMyConnections);
