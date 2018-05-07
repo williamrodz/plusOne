@@ -41,6 +41,12 @@
     padding: 0 20px;   
 }
 
+#messageBoard{
+    overflow:scroll;
+    height:400px;
+
+}
+
 .sendMessageBar{
     display: flex;
     flex-direction: row;
@@ -53,8 +59,8 @@
     font-size: 15px;
 }
 
-.messageBoardAndSendBar{
-    padding-bottom: 20px;
+#messageBoardAndSendBar{
+    padding-bottom: 60px;
 }
 
 .submitButton{
@@ -66,6 +72,11 @@
     border-radius: 4px;
 }
 
+.submitButton:hover{
+    background-color: #90ee90;
+    color:black;
+
+}
 
 
 .hidden{
@@ -91,7 +102,7 @@
     display: table;
 }
 
-.container img {
+.container img.left {
     float: left;
     max-width: 60px;
     width: 100%;
@@ -101,8 +112,11 @@
 
 .container img.right {
     float: right;
+    max-width: 60px;
+    width: 100%;      
     margin-left: 20px;
     margin-right:0;
+    border-radius: 50%;    
 }
 
 .time-right {
