@@ -522,9 +522,12 @@ function addListOfPeople(list) {
         addButtonDiv.classList.add("add-friend-div");
 
         let personAlreadyInConnections = false;
+
+        var myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
+
         //See if person is already in myConnections
-        for (let numPerson = 0; numPerson < myGroups.length; numPerson++) {
-            let connection = myGroups[numPerson];
+        for (let numPerson = 0; numPerson < myConnections.length; numPerson++) {
+            let connection = myConnections[numPerson];
             if (person.name == connection.name) {
                 personAlreadyInConnections = true;
                 break;
@@ -600,8 +603,9 @@ function addListOfGroups(list) {
         let addButtonDiv = document.createElement("div");
         addButtonDiv.classList.add("add-group-div");
 
-
         let groupAlreadyInConnections = false;
+
+        var myGroups = JSON.parse(sessionStorage.getItem("my_groups"));
         //See if group is already in myGroups
         for (let numGroup = 0; numGroup < myGroups.length; numGroup++) {
             let connection = myGroups[numGroup];

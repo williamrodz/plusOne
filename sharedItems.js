@@ -175,9 +175,9 @@ allConnections.push(johnSmithConnection);
 allConnections.push(ayaAkanoConnection);
 allConnections.push(xuaHuConnection);
 
-myConnections.push(aliciaSmithConnection)
-myConnections.push(benChenConnection)
-myConnections.push(carlaGomezConnection)
+myConnections.push(aliciaSmithConnection);
+myConnections.push(benChenConnection);
+myConnections.push(carlaGomezConnection);
 
 //var jsonMyConnections = JSON.stringify(myConnections);
 //sessionStorage.setItem("my_connections", jsonMyConnections);
