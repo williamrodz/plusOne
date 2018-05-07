@@ -5,11 +5,11 @@
 	
 }
 .group-button{
-    background-color: #1d74e5;
-    color:white;
+    background-color: #e6ffe6;
+    color:black;
     border-radius: 20px;
     font-size: 30px;
-    width: 300px;
+    width: 100%;
     height: 150px;
     text-align: center;
     padding: 10px;
@@ -24,6 +24,7 @@
 
 .activeGroupButton{
     background-color: green;
+    color: white;
 }
 
 #placeHolderMessageBoard{
@@ -37,8 +38,35 @@
     text-align: center;
     margin: 0 auto;
     max-width: 800px;
-    padding: 0 20px;    
+    padding: 0 20px;   
 }
+
+.sendMessageBar{
+    display: flex;
+    flex-direction: row;
+}
+
+.inputField{
+    width: 85%;
+    height: 30px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.messageBoardAndSendBar{
+    padding-bottom: 20px;
+}
+
+.submitButton{
+    width: 15%;
+    right: 0px;
+    background-color: green;
+    color:white;
+    font-size: 15px;
+    border-radius: 4px;
+}
+
+
 
 .hidden{
     display: none;

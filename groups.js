@@ -18,7 +18,19 @@ var activeButtonID = null;
 document.addEventListener("DOMContentLoaded", function (event) {
 	loadGroupButtons();
 
+
+	document.getElementById("sendButton").addEventListener("mouseover", function (event){
+		document.getElementById("sendButton").setAttribute("src","send-button-hover.png");
+	});
+
+	document.getElementById("sendButton").addEventListener("mouseleave", function (event){
+		document.getElementById("sendButton").setAttribute("src","send-button.png");
+	});	
+
     });
+
+
+
 
 function createGroupHTML(groupObject){
 	var groupDiv = document.createElement("div");
@@ -76,4 +88,36 @@ function loadMessageBoardOf(groupTitle){
 	}	
 }
 
+
+    // <div class="container">
+    //   <img src="funnyGuyAvatar.png" alt="Avatar" style="width:100%;">
+    //   <p id="message3">Sweet! So, what do you wanna do today?</p>
+    //   <span class="time-right">11:02</span>
+    // </div>
+
+function submitNewMessage(){
+	var messageText = document.getElementById("inputField").value;
+	if (messageText.length > 0){
+		addMessageToBoard(messageText);
+		document.getElementById("inputField").value = "";
+	}
+}
+
+function addMessageToBoard(text){
+	var div = document.createElement("div");
+	div.setAttribute("class","container");
+	var img = document.createElement("img");
+	img.setAttribute("src","funnyGuyAvatar.png");
+	img.setAttribute("alt","Avatar");
+	var p = document.createElement("p");
+	p.innerHTML = text;
+	var span = document.createElement("span");
+	span.setAttribute("class","time-right");
+	span.innerHTML = "8:13 PM";
+
+	div.appendChild(img);
+	div.appendChild(p);
+	div.appendChild(span);
+	document.getElementById("messageBoard").appendChild(div);
+}
 

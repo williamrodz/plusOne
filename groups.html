@@ -2,56 +2,63 @@
 <html>
 
 <head>
-    <meta charset="UTF-8">
-    <title>plusOne</title>
-    <!-- Load style sheets -->
-    <link rel="stylesheet" href="groups.css">
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <title>plusOne</title>
+  <!-- Load style sheets -->
+  <link rel="stylesheet" href="groups.css">
+  <link rel="stylesheet" href="index.css">
 
-    <!-- JavaScript files -->
-    <script src="groups.js"></script>
+  <!-- JavaScript files -->
+  <script src="groups.js"></script>
 
 </head>
 
 <body>
-    <div class="menu">
-        <a href="profile.html" class="menuItem"><div ><img class="icon" src="logo.png" /></div></a>
-        <a href="meet.html" class="menuItem"><div>Connect</div></a>
-        <a href="calendar.html" class="menuItem"><div >Events</div></a>
-        <a href="groups.html" class="menuItem currentMenuItem"><div >Groups</div></a>
-    </div>    
+  <div class="menu">
+    <a href="profile.html" class="menuItem"><div ><img class="icon" src="logo.png" /></div></a>
+    <a href="meet.html" class="menuItem"><div>Connect</div></a>
+    <a href="calendar.html" class="menuItem"><div >Events</div></a>
+    <a href="groups.html" class="menuItem currentMenuItem"><div >Groups</div></a>
+  </div>    
 
-    <div class="group-buttons-row" id="groupButtonsField">
-    </div>
+  <div class="group-buttons-row" id="groupButtonsField">
+  </div>
 
-    <div id="placeHolderMessageBoard">
-        Click one of the groups above to reveal the message board!
-    </div>
-    <div id="messageBoard" class="message-field hidden">
-        <h2>Message board</h2>
-        <div class="container">
-          <img src="avatar.png" alt="Avatar" style="width:100%;">
-          <p id="message1">Hello. How are you today?</p>
-          <span class="time-right">11:00</span>
+  <div id="placeHolderMessageBoard">
+    Click one of the groups above to reveal the message board!
+  </div>
+
+  <div id="messageBoardAndSendBar hidden">
+    <div id="messageBoard" class="message-field">
+      <h2>Message board</h2>
+      <div class="container">
+        <img src="avatar.png" alt="Avatar" style="width:100%;">
+        <p id="message1">Hello. How are you today?</p>
+        <span class="time-right">11:00</span>
       </div>
 
       <div class="container darker">
-          <img src="doraAvatar.png" alt="Avatar" class="right" style="width:100%;">
-          <p id="message2">Hey! I'm fine. Thanks for asking!</p>
-          <span class="time-left">11:01</span>
+        <img src="doraAvatar.png" alt="Avatar" class="right" style="width:100%;">
+        <p id="message2">Hey! I'm fine. Thanks for asking!</p>
+        <span class="time-left">11:01</span>
       </div>
 
       <div class="container">
-          <img src="funnyGuyAvatar.png" alt="Avatar" style="width:100%;">
-          <p id="message3">Sweet! So, what do you wanna do today?</p>
-          <span class="time-right">11:02</span>
+        <img src="funnyGuyAvatar.png" alt="Avatar" style="width:100%;">
+        <p id="message3">Sweet! So, what do you wanna do today?</p>
+        <span class="time-right">11:02</span>
       </div>
 
       <div class="container darker">
         <img src="catAvatar.png" alt="Avatar" style="width:100%;">
-          <p id="message4">Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
-          <span class="time-left">11:05</span>
+        <p id="message4">Nah, I dunno. Play soccer.. or learn more coding perhaps?</p>
+        <span class="time-left">11:05</span>
       </div>
+    </div>
+    <div class="message-field sendMessageBar">
+      <input id="inputField" class="inputField" type="text" name="FirstName" placeholder="Type your message here...">
+      <input class="submitButton" type="submit" value="Send" onclick="submitNewMessage()">
+    </div>
   </div>
 
 </body>
