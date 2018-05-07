@@ -1,5 +1,26 @@
-var class_description = "08:00 English Class";
-var class_blocks = ["14", "16", "24", "26", "34", "36", "44", "46"];
+//Months available in calendar
+var april = {
+    month: "April",
+    prev: null,
+    next: "May",
+    days: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 
+    19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 1, 2, 3, 4, 5]
+};
+var may = {
+    month: "May",
+    prev: "April",
+    next: "June",
+    days: [29, 30, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 
+        19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 1, 2]
+};
+var june = {
+    month: "June",
+    prev: "May",
+    next: null,
+    days: [27, 28, 29, 30, 31, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 
+        19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+};
+var currentMonth = may;
 
 //Possible filters for finding events
 var filters = [
@@ -27,23 +48,134 @@ var professionalFilter = [];
 var academicFilter = [];
 var communityServiceFilter = [];
 
+var events = [
+    {
+        name: "English Class",
+        when: {
+            month: ["April", "May", "June"],
+            days: {
+                "April": ["14", "16", "24", "26", "34", "36", "44", "46"],
+                "May": ["14", "16", "24", "26", "34", "36", "44", "46", "54"],
+                "June": ["24", "26", "34", "36", "44", "46", "54", "56"],
+            },
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social:[],
+        professional:[],
+        academic:["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills." 
+    },
+    {
+        name: "MFA Visit",
+        when: {
+           month: ["April", "May", "June"],
+           days: {
+               "April": ["27"],
+               "May": ["27"],
+               "June": ["27", "47"]
+           },
+           start: "11:00",
+           end: "13:00"
+        },
+        where: "Boston MFA",
+        social: ["Family", "Culture"],
+        professional: [],
+        academic: [],
+        communityService: [],
+        description: "Join other MIT families at the MFA and enjoy exclusive guided tours and discussions with art experts."
+    },
+    {
+        name: "Career Fair",
+        when: {
+           month: ["April"],
+           days: {
+               "April": ["22"],
+               "May": [], 
+               "June": []
+           },
+           start: "09:00",
+           end: "11:00"
+        },
+        where: "GECD",
+        social: [],
+        professional: ["Job Search"],
+        academic: [],
+        communityService: [],
+        description: "GECD is hosting a career fair for MIT spouses and partners, come to meet employers and learn about available opportunities."
+    },
+    {
+        name: "E-Crash Course",
+        when: {
+           month: ["May"],
+           days: {
+               "April": [],
+               "May": ["34"],
+               "June": []
+           },
+           start: "14:00",
+           end: "16:00"
+        },
+        where: "MIT Martin Trust Center",
+        social: [],
+        professional: ["Career Development"],
+        academic: [],
+        communityService: [],
+        description: "Learn about how to start a new venture from the experts at the Martin Trust Center."
+    }
+]
+
 // When document had fully loaded 
 document.addEventListener("DOMContentLoaded", function(event) {
     createFilters();
-    createCalendarDateBlock();
-    addMonthToBlock();
-    createWeekDaysLabels();
-    addHoliday("Easter", "11");
-    addHoliday("Cinco de Mayo", "57");
-    for (i=0; i<class_blocks.length; i++) {
-        addEvent(class_blocks[i], "class", class_description);
-    }
-    addEvent("27", "museum", "11:00 MFA Visit");
-    addEvent("47", "museum", "11:00 MFA Visit");
-    addEvent("22", "career", "08:00 Career Fair");
-    addEvent("32", "career", "10:00 Campus Interviews");
+    createCalendarDateBlock(currentMonth);
+    addEvents(events);
 
-    Util.all(".valid-event").forEach(function(event) {
+    //Button Clear All filters
+    let btnClearAllFilters = get(".clear-all-filters");
+    btnClearAllFilters.addEventListener("click", (e) => {
+
+        clearArrayFilters();
+
+        let arrayCheckbox = document.querySelectorAll("input[type='checkbox']");
+
+        arrayCheckbox.forEach((element) => {
+            element.checked = false;
+        });
+
+        addEvents(events);
+    });
+
+    Util.one("#left").addEventListener("click", function() {
+        if (currentMonth.prev) {
+            if (currentMonth.prev == "April"){
+                currentMonth = april;
+            }
+            else{
+                currentMonth = may;
+            }
+            reloadCalendar();
+            addEvents(events);
+        }
+    });
+
+    Util.one("#right").addEventListener("click", function() {
+        if (currentMonth.next) {
+            if (currentMonth.next == "May"){
+                console.log("here");
+                currentMonth = may;
+            }
+            else{
+                currentMonth = june;
+            }
+            reloadCalendar();
+            addEvents(events);
+        }
+    })
+
+    Util.all(".event").forEach(function(event) {
         event.addEventListener("click", function(e){
             e.preventDefault()
             e.stopPropagation()
@@ -61,36 +193,41 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
 });
 
-function createWeekDaysLabels() {
-    var week_days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    for (var i=0; i<7; i++) {
-        var week_day_space = document.createElement('div');
-        week_day_space.style.gridColumn = i+1;
-        week_day_space.innerHTML = week_days[i];
-        document.getElementsByClassName("calendar-header")[0].appendChild(week_day_space);
-    }
-}
-
 /**
- * Fills calendar grid with divs representing day blocks for April 2018.
- * Hard coded
+ * Fills calendar grid with divs representing day blocks and populates them
+ * with the day number.
+ * @param {month object} month
  */
-function createCalendarDateBlock() {
-    var blocks_panel = document.getElementsByClassName("calendar-dates")[0];
+function createCalendarDateBlock(month) {
+    var blocks_panel = document.getElementsByClassName("calendarDates")[0];
     var row_counter = 1;
     var col_counter = 1;
-    var day = 1;
+    var add_days = true;
+    var day_index = 0;
+    var days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     for (var i=1; i<36; i++) {
         var day_block = createDateDiv(row_counter, col_counter);
+        blocks_panel.appendChild(day_block);
+        var day_number = document.createElement('div');
+        if (add_days) {
+            var day = document.createElement('div');
+            day.classList.add("day-label");
+            day.innerHTML = days[day_index];
+            day_index += 1;
+            day_block.appendChild(day);
+            day_number.classList.add("first-row-day");
+        }
+        else {
+            day_number.classList.add("reg-day");
+        }
+        day_number.innerHTML = month.days[i-1];
+        day_block.appendChild(day_number);
         if (col_counter == 7) {
             col_counter = 1;
             row_counter += 1;
+            add_days = false;
         }
         else {col_counter += 1;}
-        if (day == 31) { day=1;}
-        day_block.innerHTML = day;
-        day += 1;
-        blocks_panel.appendChild(day_block);
     }
 }
 
@@ -108,53 +245,54 @@ function createDateDiv(row, col) {
     return day_block;
 }
 
-/**
- * Adds April, May to block of 1st of each month. 
- * Hard coded
- */
-function addMonthToBlock() {
-    document.getElementById("11").innerHTML = "April &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1";
-    document.getElementById("53").innerHTML = "May &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;1";
+function reloadCalendar() {
+    document.getElementsByClassName("calendarDates")[0].innerHTML = '';
+    createCalendarDateBlock(currentMonth);
+    document.getElementById("month").innerHTML = currentMonth.month + " 2018";
 }
 
 /**
- * Creates holiday div and adds it to calendar day-block.
- * Hard coded
- * @param {string} holiday 
- * @param {string} day_block_id
+ * Adds events to blocks
+ * @param {list} events
  */
-function addHoliday(holiday, day_block_id) {
-    var holiday_slot = document.createElement('div');
-    holiday_slot.classList.add("holiday");
-    holiday_slot.style.gridRow = 2; //Changes depending on # of holidays on day-block
-    holiday_slot.innerHTML = holiday;
-    document.getElementById(day_block_id).appendChild(holiday_slot);
-}
+function addEvents(events) {
+    for (let numEvent = 0; numEvent < events.length; numEvent++) {
+        var event = events[numEvent];
+        var month = currentMonth.month;
+        var eventBlocks = event.when.days[month];
+        for (let numBlock = 0; numBlock < eventBlocks.length; numBlock++) {
+            var eventDiv = document.createElement("div");
+            eventDiv.classList.add("event");
+            eventDiv.innerHTML = event.when.start + " " + event.name;
+            var block = eventBlocks[numBlock];
+            document.getElementById(block).appendChild(eventDiv);
+            
+        }
+    }
 
-/**
- * Creates list with event description and adds it to day block.
- * @param {string} day_block_id 
- * @param {string} type Type of event: class, museum, career
- * @param {string} description Time and name of event in that order
- */
-function addEvent(day_block_id, type, description) {
-    var event_slot = document.createElement('ul');
-    event_slot.classList.add("valid-event")
-    event_slot.setAttribute("id", type);
-    event_slot.style.gridRow = 2; //Changes depending on # of holidays and events on day-block
-    var event_list = document.createElement('li');
-    var event_description = document.createElement('b');
-    event_description.innerHTML = description;
-    event_list.appendChild(event_description);
-    event_slot.appendChild(event_list);
-    document.getElementById(day_block_id).appendChild(event_slot);   
+
+
+
+
+
+
+    // var event_slot = document.createElement('div');
+    // event_slot.classList.add("event");
+    // event_slot.setAttribute("id", type);
+    // event_slot.style.gridRow = 2; //Changes depending on # of holidays and events on day-block
+    // var event_list = document.createElement('li');
+    // var event_description = document.createElement('b');
+    // event_description.innerHTML = description;
+    // event_list.appendChild(event_description);
+    // event_slot.appendChild(event_list);
+    // document.getElementById(day_block_id).appendChild(event_slot);   
 }
 
 function displayEvent(event, current_document) {
     var modal = Util.one("#modal")
     modal.style.display = "block";
 
-    modal.innerHTML = ""
+    modal.innerHTML = "";
 
     var modal_display = current_document.createElement('div')
 
@@ -265,6 +403,13 @@ function createFilters() {
 
         filtersList.appendChild(horizontalBar);
     }
+}
+
+function clearArrayFilters() {
+    socialFilter = [];
+    professionalFilter = [];
+    academicFilter = [];
+    communityServiceFilter = [];
 }
 
 
