@@ -6,12 +6,12 @@ Util.events(document, {
 		Util.all(".menuItem").forEach(function(connection) {
 			connection.addEventListener("mouseenter", function(e){
 				if (connection.getAttribute("href") == "profile.html") {
-					connection.firstChild.firstChild.setAttribute("src", "logo_white.png");
+					connection.firstChild.firstChild.setAttribute("src", "resources/logo_white.png");
 				}
 			})
 			connection.addEventListener("mouseleave", function(e){
 				if (connection.getAttribute("href") == "profile.html") {
-					connection.firstChild.firstChild.setAttribute("src", "logo.png");
+					connection.firstChild.firstChild.setAttribute("src", "resources/logo.png");
 				}
 			})
 		})

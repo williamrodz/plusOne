@@ -7,7 +7,7 @@ var myEvents = [];
 var myMessages = [];
 var myGroups = [];
 
-var userImages = ["funnyGuyAvatar.png", "doraAvatar.png", "avatar.png", "catAvatar.png", "penguinAvatar.png", "nerd.png"];
+var userImages = ["resources/funnyGuyAvatar.png", "resources/doraAvatar.png", "resources/avatar.png", "resources/catAvatar.png", "resources/penguinAvatar.png", "resources/nerd.png"];
 
 var aliciaSmithConnection = {
     name: "Alicia Smith",
