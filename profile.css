@@ -123,7 +123,7 @@ body {
     height: 80px;
     cursor: pointer;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     padding: 5px;
 }
 
@@ -346,7 +346,6 @@ body {
 .my-connection {
     display: grid;
     grid-template-areas: 'image information';
-
 }
 
 .my-connection-image {
@@ -354,7 +353,7 @@ body {
     width: auto;
     height:90%;
     border-right: solid;
-    border-color: black;
+    border-color: #a7a8aa;
     border-width: 1px;
     padding-right: 10px;
     padding-left: 10px;
@@ -366,9 +365,9 @@ body {
     grid-area: information;
     width: 200px;
     float: left;
-    margin: auto;
     margin-right: 45px;
     height:90%;
+    margin-left: 10px;
     padding-top: 8px;
 }
 
@@ -384,7 +383,7 @@ body {
     width: 60px;
     height:90%;
     border-right: solid;
-    border-color: black;
+    border-color: #a7a8aa;
     border-width: 1px;
     padding-right: 10px;
     padding-left: 10px;
@@ -446,7 +445,7 @@ body {
 .my-message-title {
     margin: 10px;
     border-bottom: solid;
-    border-color: black;
+    border-color: #a7a8aa;
     border-width: 1px;
     font-weight: bold;
     font-size: 15px;

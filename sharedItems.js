@@ -2,12 +2,12 @@ var allConnections = [];
 var allEvents = [];
 var allGroups = [];
 
-var myGroups = [];
+var myConnections = [];
 var myEvents = [];
 var myMessages = [];
 var myGroups = [];
 
-var userImages = ["funnyGuyAvatar.png", "doraAvatar.png", "avatar.png", "catAvatar.png", "penguinAvatar.png"];
+var userImages = ["funnyGuyAvatar.png", "doraAvatar.png", "avatar.png", "catAvatar.png", "penguinAvatar.png", "nerd.png"];
 
 var aliciaSmithConnection = {
     name: "Alicia Smith",
@@ -23,6 +23,7 @@ var aliciaSmithConnection = {
     languages: ["English"],
     description: "Enjoy exploring local museums and learning new languages",
     group: false,
+    avatar_index: 1,
     uid: "68C70338-C568-44F2-891D-A8BC9ECF77F8"
 };
 
@@ -39,6 +40,7 @@ var benChenConnection = {
     professionalInterests: ["Computer science"],
     languages: ["English", "Chinese"],
     description: "Entrepreneur in education technology",
+    avatar_index: 2,
     uid: "8A4309FC-97BE-4F28-96EE-6EA5EA05BA01"
 };
 var carlaGomezConnection = {
@@ -55,6 +57,7 @@ var carlaGomezConnection = {
     languages: ["Spanish", "English"],
     description: "Love visiting foreign countries and learning about other cultures",
     group: false,
+    avatar_index: 3,
     uid: "AFB95176-C0C5-4A9D-90ED-15B831EFB378"
 };
 var jorgeRamirezConnection = {
@@ -71,6 +74,7 @@ var jorgeRamirezConnection = {
     languages: ["Spanish"],
     description: "Love reading latin american writers like Alberto Fuguet and Gabriel Garcia Marquez",
     group: false,
+    avatar_index: 4,
     uid: "B058573F-F202-48CF-A90E-9B60E1C42941"
 };
 var eunjinKooConnection = {
@@ -87,6 +91,7 @@ var eunjinKooConnection = {
     languages: ["Korean", "English"],
     description: "Love author food and I enjoy trying new restaurants during the weekends",
     group: false,
+    avatar_index: 5,
     uid: "98D4E404-4F0D-4CEE-89FF-69DFBA8A52B4"
 };
 var carlesMentuyConnection = {
@@ -103,6 +108,7 @@ var carlesMentuyConnection = {
     languages: ["Spanish", "Catalan"],
     description: "Love reading Arturo Perez Reverte",
     group: false,
+    avatar_index: 1,
     uid: "E3F6B164-F4B9-4E35-B6C7-FFB55F761A08"
 }
 
@@ -120,6 +126,7 @@ var johnSmithConnection = {
     languages: ["English"],
     description: "Love playing piano",
     group: false,
+    avatar_index: 2,
     uid: "5F78EB84-18AA-40F4-AB14-5A68D05BA9F1"
 }
 
@@ -137,6 +144,7 @@ var ayaAkanoConnection = {
     languages: ["Japanese", "Korean"],
     description: "Love doing research about molecular biology",
     group: false,
+    avatar_index: 3,
     uid: "39B2AC22-DA2F-4B52-891E-9132DA1A6EE4"
 }
 var xuaHuConnection = {
@@ -153,6 +161,7 @@ var xuaHuConnection = {
     languages: ["Chinese", "English"],
     description: "Love doing research about Systems Thinking",
     group: false,
+    avatar_index: 4,
     uid: "DD2B5A24-9C3B-4092-A35B-AC641E2AF3E4"
 }
 
@@ -166,10 +175,9 @@ allConnections.push(johnSmithConnection);
 allConnections.push(ayaAkanoConnection);
 allConnections.push(xuaHuConnection);
 
-
-myGroups.push(aliciaSmithConnection);
-myGroups.push(benChenConnection);
-myGroups.push(carlaGomezConnection);
+myConnections.push(aliciaSmithConnection)
+myConnections.push(benChenConnection)
+myConnections.push(carlaGomezConnection)
 
 //var jsonMyConnections = JSON.stringify(myConnections);
 //sessionStorage.setItem("my_connections", jsonMyConnections);
@@ -339,7 +347,7 @@ var readingGroup = {
     description: "Love reading books? Join our group!",
     messages: [{ from: 1, content: "Any book recommendations?" },
     { from: 2, content: "I'm reading 'Guantanamo Diary'. I really recommend it!" },
-    { from: 0, content: "That one is great! I also read 'All the light that you cannot see'. Loved it." },
+    { from: 4, content: "That one is great! I also read 'All the light that you cannot see'. Loved it." },
     { from: 3, content: "Wow, love the book worm activity ;)" }],
     group: true,
     uid: "7807265D-7430-440B-B6FC-BE759E832B9E"

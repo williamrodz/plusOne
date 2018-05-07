@@ -250,7 +250,7 @@ function addConnectionToDisplay(connection) {
 	
 	var image = document.createElement("img")
 	image.classList.add("my-connection-image")
-	image.src = "placeholder_connection.png"
+	image.src = userImages[connection.avatar_index]
 	display_connection.appendChild(image)
 
 	var connectionInformation = document.createElement("div")
