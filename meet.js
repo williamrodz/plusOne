@@ -780,7 +780,7 @@ function displayMessage(title, message, current_document) {
 
         '<div class="modal-title-meet">' +
         '<span class="modal-title">' + title + '</span>' +
-        '<input type="button" class="close-button" value="x"></input>' +
+        '<span class="close-button">&times;</span>' +
         '</div>' +
 
         '<div class="modal-message-meet">' + message + '</div>' +
