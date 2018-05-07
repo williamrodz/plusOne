@@ -13,9 +13,19 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 	if (activeButtonID != null) {
 		document.getElementById("placeHolderMessageBoard").classList.add("hidden")
-		document.getElementById("messageBoard").classList.remove("hidden");
+		document.getElementById("messageBoardAndSendBar").classList.remove("hidden");
+
 		loadMessageBoardOf(activeButtonID);
 	}
+
+	document.getElementById("inputField").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        // Do custom functionality
+        submitNewMessage();
+
+    }
+    });	
 
 	/*
 	document.getElementById("sendButton").addEventListener("mouseover", function (event){
@@ -59,7 +69,7 @@ function loadMessageBoardOf(groupUID){
 		document.getElementById(activeButtonID).classList.remove("activeGroupButton");
 	} else{
 		document.getElementById("placeHolderMessageBoard").classList.add("hidden")
-		document.getElementById("messageBoard").classList.remove("hidden");
+		document.getElementById("messageBoardAndSendBar").classList.remove("hidden");
 
 	}
 	document.getElementById("messageBoard").innerHTML = "";
@@ -72,7 +82,7 @@ function loadMessageBoardOf(groupUID){
 	document.getElementById(activeButtonID).classList.add("activeGroupButton");
 
 	group.messages.forEach(function(message) {
-		addMessageToBoard(message);
+		addMessageToBoard(message, "left");
 	})
 }
 
@@ -80,28 +90,35 @@ function submitNewMessage(){
 	var messageText = document.getElementById("inputField").value;
 	var message = {from: 0, content: messageText}
 	if (messageText.length > 0){
-		addMessageToBoard(message);
+		addMessageToBoard(message, "right");
 		document.getElementById("inputField").value = "";
 		addMessageToGroupWithUID(message, activeButtonID);
 	}
 }
 
-function addMessageToBoard(message) {
+function addMessageToBoard(message, location) {
 	var div = document.createElement("div");
 	div.setAttribute("class","container");
 	var img = document.createElement("img");
+	img.setAttribute("class",location);
 	img.setAttribute("src",userImages[message.from]);
 	img.setAttribute("alt","Avatar");
 	var p = document.createElement("p");
 	p.innerHTML = message.content;
 	var span = document.createElement("span");
-	span.setAttribute("class","time-right");
+	if (location=="left"){
+		span.setAttribute("class","time-right");
+	} else{
+		span.setAttribute("class","time-left");
+
+	}
 	span.innerHTML = "8:13 PM";
 
 	div.appendChild(img);
 	div.appendChild(p);
 	div.appendChild(span);
 	document.getElementById("messageBoard").appendChild(div);
+	div.scrollIntoView();
 }
 
 function getGroupWithUID(groupUID) {
