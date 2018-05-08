@@ -29,6 +29,8 @@ var professionalFilter = [];
 var academicFilter = [];
 var communityServiceFilter = [];
 
+var currentEvent = null;
+
 // When document had fully loaded 
 document.addEventListener("DOMContentLoaded", function (event) {
     createFilters();
@@ -159,12 +161,14 @@ function addEvents(events) {
         eventDiv.classList.add("event");
         eventDiv.setAttribute("parent", event.when.day);
         eventDiv.innerHTML = event.when.start + " " + event.name;
+        eventDiv.id = event.uid
         document.getElementById(eventBlock).appendChild(eventDiv);
     }
     Util.all(".event").forEach(function (event) {
         event.addEventListener("click", function (e) {
             e.preventDefault()
             e.stopPropagation()
+            currentEvent = event;
             displayEventModal(event, document)
         })
     })
@@ -204,6 +208,12 @@ function displayEventModal(event, current_document) {
         e.preventDefault();
         e.stopPropagation();
         Util.one("#modal").style.display = "none";
+        if (currentEvent != null) {
+            var event = getEventFromHTMLEvent(currentEvent);
+            var events = JSON.parse(sessionStorage.getItem("my_events"));
+            events.push(event);
+            sessionStorage.setItem("my_events", JSON.stringify(events));
+        }
     });
 
     Util.one(".modal-close").addEventListener("click", function (e) {
@@ -259,7 +269,7 @@ function createFilters() {
     let communityServiceArray = [];
 
     //Extract filter values from events
-    events.forEach((event, numEvent) => {
+    allEvents.forEach((event, numEvent) => {
         //Social
         let socialArrayEvent = event.social;
 
@@ -501,8 +511,8 @@ function getEventObject(event) {
     let eventParent = event.getAttribute("parent");
     let eventNameString = event.innerHTML;
     let eventName = eventNameString.substring(6, eventNameString.length);
-    for (let i = 0; i < events.length; i++) {
-        let potentialEvent = events[i];
+    for (let i = 0; i < allEvents.length; i++) {
+        let potentialEvent = allEvents[i];
         if (eventParent == potentialEvent.when.day && currentMonth.month == potentialEvent.when.month && eventName == potentialEvent.name) {
             return potentialEvent;
         }
@@ -512,8 +522,8 @@ function getEventObject(event) {
 function getMonthEvents() {
     var monthEvents = [];
 
-    for (let i = 0; i < events.length; i++) {
-        let potentialEvent = events[i];
+    for (let i = 0; i < allEvents.length; i++) {
+        let potentialEvent = allEvents[i];
         if (currentMonth.month == potentialEvent.when.month) {
             monthEvents.push(potentialEvent);
         }
@@ -521,4 +531,13 @@ function getMonthEvents() {
     return monthEvents;
 }
 
+function getEventFromHTMLEvent(htmlEvent) {
+    var uid = htmlEvent.id;
+    for (var index = 0; index < allEvents.length; index ++) {
+        var event = allEvents[index]
+        if (event.uid == uid) {
+            return event
+        }
+    }
+}
 

@@ -179,8 +179,8 @@ myConnections.push(aliciaSmithConnection);
 myConnections.push(benChenConnection);
 myConnections.push(carlaGomezConnection);
 
-var jsonMyConnections = JSON.stringify(myConnections);
-sessionStorage.setItem("my_connections", jsonMyConnections);
+//var jsonMyConnections = JSON.stringify(myConnections);
+//sessionStorage.setItem("my_connections", jsonMyConnections);
 
 if (sessionStorage.getItem("my_connections") == null) {
     var jsonMyConnections = JSON.stringify(myConnections);
@@ -867,8 +867,8 @@ myEvents.push(allEvents[0]);
 myEvents.push(allEvents[3]);
 myEvents.push(allEvents[5]);
 myEvents.push(allEvents[7]);
-var jsonMyEvents = JSON.stringify(myEvents);
-sessionStorage.setItem("my_events", jsonMyEvents);
+//var jsonMyEvents = JSON.stringify(myEvents);
+//sessionStorage.setItem("my_events", jsonMyEvents);
 if (sessionStorage.getItem("my_events") == null) {
     var jsonMyEvents = JSON.stringify(myEvents);
     sessionStorage.setItem("my_events", jsonMyEvents);
@@ -949,8 +949,8 @@ allGroups.push(englishClubGroup)
 myGroups.push(englishClubGroup)
 myGroups.push(readingGroup)
 
-var jsonMyGroups = JSON.stringify(myGroups);
-sessionStorage.setItem("my_groups", jsonMyGroups);
+//var jsonMyGroups = JSON.stringify(myGroups);
+//sessionStorage.setItem("my_groups", jsonMyGroups);
 if (sessionStorage.getItem("my_groups") == null) {
     var jsonMyGroups = JSON.stringify(myGroups);
     sessionStorage.setItem("my_groups", jsonMyGroups);

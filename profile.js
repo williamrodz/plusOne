@@ -266,6 +266,7 @@ function addConnectionToDisplay(connection) {
 }
 
 function addEventToDisplay(event) {
+	//console.log(event)
 	var events = Util.one("#my-events").children[1];
 	var display_event = document.createElement("div")
 	display_event.classList.add("my-item")
