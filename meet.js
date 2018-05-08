@@ -650,7 +650,11 @@ function addListOfGroups(list) {
 
 function showNumConnections() {
     let numConnectionsSpan = get(".num-of-connections");
-    let numConnections = myGroups.length + myGroups.length;
+
+    let myGroups = JSON.parse(sessionStorage.getItem("my_groups"));
+    let myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
+
+    let numConnections = myConnections.length + myGroups.length;
     if (numConnections === 1) {
         numConnectionsSpan.innerHTML = "Currently you have 1 connection";
     } else if (numConnections > 1) {
@@ -666,7 +670,10 @@ function showInitialNumberOfPersonsToConnectWith() {
 
     let matchingCriteria = get(".matching-criteria");
 
-    let numPeople = allConnections.length - myGroups.length;
+    let myGroups = JSON.parse(sessionStorage.getItem("my_groups"));
+    let myConnections = JSON.parse(sessionStorage.getItem("my_connections"));
+
+    let numPeople = allConnections.length - myConnections.length;
 
     let legend = "";
 
@@ -678,7 +685,7 @@ function showInitialNumberOfPersonsToConnectWith() {
         legend = "You have 0 people and ";
     }
 
-    let numGroups = allGroups.length;
+    let numGroups = allGroups.length - myGroups.length;
 
     if (numGroups === 1) {
         legend += "1 group to connect with";
