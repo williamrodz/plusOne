@@ -278,6 +278,15 @@ li b{
                          '. . . . add_event';
 }
 
+.modal-right-side-event {
+    grid-area: right_side;
+    margin-top: 10px;
+    margin-left: 5px;
+    width: auto;
+    max-width: 290px;
+    height:125px;
+}
+
 .modal-event-add {
     grid-area: add_event;
     width: auto;

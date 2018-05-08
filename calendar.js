@@ -628,8 +628,7 @@ var events = [
 document.addEventListener("DOMContentLoaded", function (event) {
     createFilters();
     createCalendarDateBlock(currentMonth);
-    console.log("here1");
-    addEvents(getMonthEvents(events));
+    addEvents(getMonthEvents());
 
     //Button Clear All filters
     let btnClearAllFilters = get(".clear-all-filters");
@@ -642,8 +641,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         arrayCheckbox.forEach((element) => {
             element.checked = false;
         });
-        console.log("here2");
-        addEvents(getMonthEvents(events));
+        addEvents(getMonthEvents());
     });
 
     Util.one("#left").addEventListener("click", function () {
@@ -655,8 +653,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 currentMonth = may;
             }
             reloadCalendar();
-            console.log("here3");
-            addEvents(getMonthEvents(events));
+            addEvents(getMonthEvents());
             filterEvents();
 
         }
@@ -671,8 +668,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 currentMonth = june;
             }
             reloadCalendar();
-            console.log("here4");
-            addEvents(getMonthEvents(events));
+            addEvents(getMonthEvents());
             filterEvents();
         }
     })
@@ -781,7 +777,7 @@ function displayEventModal(event, current_document) {
 
     var eventObject = getEventObject(event);
 
-    modal_display.innerHTML = '<div class="modal-title">' + eventObject.name + '<span class="modal-close">×</span></div><div class="modal-right-side">' + 'Time: ' + eventObject.when.start + ' - ' + eventObject.when.end + '<br>' + 'Location: ' + eventObject.where + '<br>' + eventObject.description + '</div><div class="modal-event-add">Add +</div>';
+    modal_display.innerHTML = '<div class="modal-title">' + eventObject.name + '<span class="modal-close">×</span></div><div class="modal-right-side-event">' + 'Time: ' + eventObject.when.start + ' - ' + eventObject.when.end + '<br>' + 'Location: ' + eventObject.where + '<br>' + eventObject.description + '</div><div class="modal-event-add">Add +</div>';
 
     var dateDisplay = document.createElement("div")
 	dateDisplay.classList.add("modal-left-side")
@@ -793,7 +789,7 @@ function displayEventModal(event, current_document) {
 
 	var dateDisplayDayBar = document.createElement("div")
 	dateDisplayDayBar.classList.add("my-event-date-day-modal")
-	dateDisplayDayBar.innerHTML = eventObject.when.day
+	dateDisplayDayBar.innerHTML = eventObject.when.dayNumber
 	dateDisplay.appendChild(dateDisplayDayBar)
     modal_display.appendChild(dateDisplay);
 
@@ -1007,6 +1003,7 @@ function areFiltersEmpty() {
 }
 
 function isEventInFilters(event) {
+    console.log("filteringevent");
     let socialArray = event.social;
 
     for (let i = 0; i < socialArray.length; i++) {
@@ -1049,15 +1046,16 @@ function isEventInFilters(event) {
 
 function filterEvents() {
 
-    let filteredEvents = getMonthEvents(events);
-
-
+    let filteredEvents = getMonthEvents();
+    console.log("filteredEvents");
+    console.log(filteredEvents);
     if (!areFiltersEmpty() && filteredEvents.length > 0) {
         //Filter events
-        filteredEvents = events.filter(isEventInFilters);
-        
+        filteredEvents = filteredEvents.filter(isEventInFilters);
+    
     }
-    console.log("here5");
+    console.log("todos");
+    console.log(filteredEvents);
     addEvents(filteredEvents);
 }
 
@@ -1096,16 +1094,19 @@ function cleanCalendarEvents() {
 
 function getEventObject(event) {
     let eventParent = event.getAttribute("parent");
+    let eventNameString = event.innerHTML;
+    let eventName = eventNameString.substring(6, eventNameString.length);
     for (let i = 0; i < events.length; i++) {
         let potentialEvent = events[i];
-        if (eventParent == potentialEvent.when.day && currentMonth.month == potentialEvent.when.month) {
+        if (eventParent == potentialEvent.when.day && currentMonth.month == potentialEvent.when.month && eventName == potentialEvent.name) {
             return potentialEvent;
         }
     }
 }
 
-function getMonthEvents(events) {
+function getMonthEvents() {
     var monthEvents = [];
+
     for (let i = 0; i < events.length; i++) {
         let potentialEvent = events[i];
         if (currentMonth.month == potentialEvent.when.month) {
