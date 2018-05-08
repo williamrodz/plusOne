@@ -112,7 +112,7 @@ function addMessageToBoard(message, location) {
 		span.setAttribute("class","time-left");
 
 	}
-	span.innerHTML = "8:13 PM";
+	span.innerHTML = getCurrentTime();
 
 	div.appendChild(img);
 	div.appendChild(p);
@@ -144,3 +144,21 @@ function addMessageToGroupWithUID(message, groupUID) {
     sessionStorage.setItem("my_groups", jsonMyGroups);
 }
 
+function getCurrentTime(){
+	var d = new Date();
+	var hours = d.getHours();
+	var MM = d.getMinutes();
+
+	var HH = "";
+	var AMPM = "";
+	if (hours > 12){
+		HH = hours - 12;
+		AMPM = "PM";
+	} else{
+		HH = hours;
+		AMPM = "AM";
+	}
+
+	var timeString = HH+":"+MM+" "+AMPM;
+	return timeString;
+}
