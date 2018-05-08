@@ -156,15 +156,15 @@ function displayEvent(htmlEvent, current_document) {
 
 	var dateDisplayMonthBar = document.createElement("div")
 	dateDisplayMonthBar.classList.add("my-event-date-month-modal")
-	dateDisplayMonthBar.innerHTML = months[event.month-1]
+	dateDisplayMonthBar.innerHTML = event.when.month.slice(0,3)
 	dateDisplay.appendChild(dateDisplayMonthBar)
 
 	var dateDisplayDayBar = document.createElement("div")
 	dateDisplayDayBar.classList.add("my-event-date-day-modal")
-	dateDisplayDayBar.innerHTML = event.day
+	dateDisplayDayBar.innerHTML = event.when.dayNumber
 	dateDisplay.appendChild(dateDisplayDayBar)
 
-	modal_display.innerHTML = '<div class="modal-title">' + event.title + '<span class="modal-close">&times;</span></div><div class="modal-right-side-event">' + event.start_time + '-' + event.end_time + '<br>' + event.location + '</div><div class="modal-event-remove">Remove</div>'
+	modal_display.innerHTML = '<div class="modal-title">' + event.name + '<span class="modal-close">&times;</span></div><div class="modal-right-side-event">' + event.when.start + '-' + event.when.end + '<br>' + event.where + '</div><div class="modal-event-remove">Remove</div>'
 	modal_display.appendChild(dateDisplay)
 
 	modal.appendChild(modal_display)
@@ -276,12 +276,12 @@ function addEventToDisplay(event) {
 
 	var dateDisplayMonthBar = document.createElement("div")
 	dateDisplayMonthBar.classList.add("my-event-date-month")
-	dateDisplayMonthBar.innerHTML = months[event.month-1]
+	dateDisplayMonthBar.innerHTML = event.when.month.slice(0,3)
 	dateDisplay.appendChild(dateDisplayMonthBar)
 
 	var dateDisplayDayBar = document.createElement("div")
 	dateDisplayDayBar.classList.add("my-event-date-day")
-	dateDisplayDayBar.innerHTML = event.day
+	dateDisplayDayBar.innerHTML = event.when.dayNumber
 	dateDisplay.appendChild(dateDisplayDayBar)
 	
 	display_event.appendChild(dateDisplay)
@@ -289,7 +289,7 @@ function addEventToDisplay(event) {
 	var eventInformation = document.createElement("div")
 	eventInformation.classList.add("my-event-information")
 
-	eventInformation.innerHTML = event.title
+	eventInformation.innerHTML = event.name
 
 	display_event.appendChild(eventInformation)
 
