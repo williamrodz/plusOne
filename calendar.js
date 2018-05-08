@@ -186,6 +186,8 @@ function displayEventModal(event, current_document) {
 
     var eventObject = getEventObject(event);
 
+    var eventAdded = eventAlreadyAdded(event.id)
+
     modal_display.innerHTML = '<div class="modal-title">' + eventObject.name + '<span class="modal-close">×</span></div><div class="modal-right-side-event">' + 'Time: ' + eventObject.when.start + ' - ' + eventObject.when.end + '<br>' + 'Location: ' + eventObject.where + '<br>' + eventObject.description + '</div><div class="modal-event-add">Add +</div>';
 
     var dateDisplay = document.createElement("div")
@@ -539,5 +541,16 @@ function getEventFromHTMLEvent(htmlEvent) {
             return event
         }
     }
+}
+
+function eventAlreadyAdded(eventUID) {
+    var myEvents = JSON.parse(sessionStorage.getItem("my_events"));
+    for (var index = 0; index < myEvents.length; index ++) {
+        var event = myEvents[index]
+        if (event.uid == eventUID) {
+            return true
+        }
+    }
+    return false
 }
 
