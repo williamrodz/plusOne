@@ -1,13 +1,19 @@
+.groupButtonsAndMessageBoard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .group-buttons-row{
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
 	padding: 20px;
 	
 }
 .group-button{
-    background-color: #e6ffe6;
     color:black;
     border-radius: 20px;
+    border: 1px solid #bbb;    
     font-size: 30px;
     width: 100%;
     height: 150px;
@@ -18,16 +24,18 @@
 }
 
 .group-button:hover{
-    background-color: #90ee90;
+    background-color: #73a9ef;
     color: black;
 }
 
 .activeGroupButton{
-    background-color: green;
+    background-color: #1d74e5;
     color: white;
 }
 
+
 #placeHolderMessageBoard{
+    padding-left: 60px;
     padding-top: 20px;
     text-align: center;
     font-size: 30px;
@@ -57,23 +65,26 @@
     height: 30px;
     text-align: left;
     font-size: 15px;
+    border-radius: 4px;
 }
 
 #messageBoardAndSendBar{
+    padding-top: 60px;
     padding-bottom: 60px;
+    width:90%;
 }
 
 .submitButton{
     width: 15%;
     right: 0px;
-    background-color: green;
+    background-color: #1d74e5;
     color:white;
     font-size: 15px;
     border-radius: 4px;
 }
 
 .submitButton:hover{
-    background-color: #90ee90;
+    background-color: #73a9ef;
     color:black;
 
 }
