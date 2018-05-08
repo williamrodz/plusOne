@@ -32,10 +32,10 @@ var communityServiceFilter = [];
 var events = [
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "56",
+            dayNumber: "29",
             start: "08:00",
             end: "09:30"
         },
@@ -48,10 +48,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "54",
+            dayNumber: "27",
             start: "08:00",
             end: "09:30"
         },
@@ -64,10 +64,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "46",
+            dayNumber: "22",
             start: "08:00",
             end: "09:30"
         },
@@ -80,10 +80,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "44",
+            dayNumber: "20",
             start: "08:00",
             end: "09:30"
         },
@@ -96,10 +96,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "36",
+            dayNumber: "15",
             start: "08:00",
             end: "09:30"
         },
@@ -112,10 +112,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "34",
+            dayNumber: "13",
             start: "08:00",
             end: "09:30"
         },
@@ -128,10 +128,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "26",
+            dayNumber: "8",
             start: "08:00",
             end: "09:30"
         },
@@ -144,10 +144,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "June",
             day: "24",
+            dayNumber: "6",
             start: "08:00",
             end: "09:30"
         },
@@ -160,26 +160,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
-        when: {
-            month: "June",
-            day: "24",
-            start: "08:00",
-            end: "09:30"
-        },
-        where: "32-141",
-        social: ["Culture"],
-        professional: [],
-        academic: ["English Classes"],
-        communityService: [],
-        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
-    },
-    {
-        name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "54",
+            dayNumber: "30",
             start: "08:00",
             end: "09:30"
         },
@@ -192,10 +176,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "46",
+            dayNumber: "25",
             start: "08:00",
             end: "09:30"
         },
@@ -208,10 +192,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "44",
+            dayNumber: "23",
             start: "08:00",
             end: "09:30"
         },
@@ -224,10 +208,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "36",
+            dayNumber: "18",
             start: "08:00",
             end: "09:30"
         },
@@ -240,10 +224,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "34",
+            dayNumber: "16",
             start: "08:00",
             end: "09:30"
         },
@@ -256,10 +240,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "26",
+            dayNumber: "11",
             start: "08:00",
             end: "09:30"
         },
@@ -272,10 +256,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "24",
+            dayNumber: "9",
             start: "08:00",
             end: "09:30"
         },
@@ -288,10 +272,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "16",
+            dayNumber: "4",
             start: "08:00",
             end: "09:30"
         },
@@ -304,10 +288,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "May",
             day: "14",
+            dayNumber: "2",
             start: "08:00",
             end: "09:30"
         },
@@ -320,10 +304,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "46",
+            dayNumber: "27",
             start: "08:00",
             end: "09:30"
         },
@@ -336,10 +320,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "44",
+            dayNumber: "25",
             start: "08:00",
             end: "09:30"
         },
@@ -352,10 +336,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "36",
+            dayNumber: "20",
             start: "08:00",
             end: "09:30"
         },
@@ -368,10 +352,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "34",
+            dayNumber: "18",
             start: "08:00",
             end: "09:30"
         },
@@ -384,10 +368,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "26",
+            dayNumber: "13",
             start: "08:00",
             end: "09:30"
         },
@@ -400,10 +384,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "24",
+            dayNumber: "11",
             start: "08:00",
             end: "09:30"
         },
@@ -416,10 +400,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "16",
+            dayNumber: "6",
             start: "08:00",
             end: "09:30"
         },
@@ -432,10 +416,10 @@ var events = [
     },
     {
         name: "English Class",
-        id: "EnglishClass",
         when: {
             month: "April",
             day: "14",
+            dayNumber: "4",
             start: "08:00",
             end: "09:30"
         },
@@ -448,10 +432,10 @@ var events = [
     },
     {
         name: "MFA Visit",
-        id: "MFAVisit",
         when: {
             month: "June",
             day: "47",
+            dayNumber: "23",
             start: "11:00",
             end: "13:00"
         },
@@ -464,10 +448,10 @@ var events = [
     },
     {
         name: "MFA Visit",
-        id: "MFAVisit",
         when: {
             month: "June",
             day: "27",
+            dayNumber: "9",
             start: "11:00",
             end: "13:00"
         },
@@ -480,10 +464,10 @@ var events = [
     },
     {
         name: "MFA Visit",
-        id: "MFAVisit",
         when: {
             month: "May",
             day: "27",
+            dayNumber: "12",
             start: "11:00",
             end: "13:00"
         },
@@ -496,10 +480,10 @@ var events = [
     },
     {
         name: "MFA Visit",
-        id: "MFAVisit",
         when: {
             month: "April",
             day: "27",
+            dayNumber: "14",
             start: "11:00",
             end: "13:00"
         },
@@ -512,10 +496,10 @@ var events = [
     },
     {
         name: "Career Fair",
-        id: "CareerFair",
         when: {
             month: "April",
             day: "22",
+            dayNumber: "9",
             start: "09:00",
             end: "11:00"
         },
@@ -528,10 +512,10 @@ var events = [
     },
     {
         name: "E-Crash Course",
-        id: "ECrashCourse",
         when: {
            month: "May",
            day: "34", 
+           dayNumber: "16",
            start: "14:00",
            end: "16:00"
            },
@@ -544,10 +528,10 @@ var events = [
     }, 
     {
         name: "Innovation Fair",
-        id: "InnovationFair",
         when: {
            month: "May",
            day: "42", 
+           dayNumber: "21",
            start: "16:00",
            end: "18:00"
            },
@@ -560,10 +544,10 @@ var events = [
     }, 
     {
         name: "Math Tutoring",
-        id: "MathTutoring",
         when: {
            month: "May",
            day: "22", 
+           dayNumber: "7",
            start: "10:00",
            end: "11:00"
            },
@@ -576,10 +560,10 @@ var events = [
     }, 
     {
         name: "Math Tutoring",
-        id: "MathTutoring",
         when: {
            month: "May",
            day: "32", 
+           dayNumber: "14",
            start: "10:00",
            end: "11:00"
            },
@@ -592,10 +576,10 @@ var events = [
     }, 
     {
         name: "Math Tutoring",
-        id: "MathTutoring",
         when: {
            month: "April",
-           day: "52", 
+           day: "52",
+           dayNumber: "30", 
            start: "10:00",
            end: "11:00"
            },
@@ -608,10 +592,10 @@ var events = [
     }, 
     {
         name: "Math Tutoring",
-        id: "MathTutoring",
         when: {
            month: "June",
-           day: "22", 
+           day: "22",
+           dayNumber: "4", 
            start: "10:00",
            end: "11:00"
            },
@@ -624,10 +608,10 @@ var events = [
     }, 
     {
         name: "Math Tutoring",
-        id: "MathTutoring",
         when: {
            month: "June",
            day: "32", 
+           dayNumber: "11",
            start: "10:00",
            end: "11:00"
            },
@@ -772,7 +756,6 @@ function addEvents(events) {
         var eventBlock = event.when.day;
         var eventDiv = document.createElement("div");
         eventDiv.classList.add("event");
-        eventDiv.classList.add(event.id);
         eventDiv.setAttribute("parent", event.when.day);
         eventDiv.innerHTML = event.when.start + " " + event.name;
         document.getElementById(eventBlock).appendChild(eventDiv);
@@ -781,12 +764,12 @@ function addEvents(events) {
         event.addEventListener("click", function (e) {
             e.preventDefault()
             e.stopPropagation()
-            displayEvent(event, document)
+            displayEventModal(event, document)
         })
     })
 }
 
-function displayEvent(event, current_document) {
+function displayEventModal(event, current_document) {
     var modal = Util.one("#modal");
     modal.style.display = "block";
 
@@ -798,8 +781,22 @@ function displayEvent(event, current_document) {
 
     var eventObject = getEventObject(event);
 
-    modal_display.innerHTML = '<div class="modal-title">' + eventObject.name + '<span class="modal-close">×</span></div><img class="modal-left-side" src="event.png"/><div class="modal-right-side">' + 'When: ' + eventObject.when.start + ' - ' + eventObject.when.end + '<br>' + 'Location: ' + eventObject.where + '<br>' + eventObject.description + '</div><div class="modal-event-add">Add +</div>';
-    // '</div><img class="modal-left-side" src="event.png"/>
+    modal_display.innerHTML = '<div class="modal-title">' + eventObject.name + '<span class="modal-close">×</span></div><div class="modal-right-side">' + 'Time: ' + eventObject.when.start + ' - ' + eventObject.when.end + '<br>' + 'Location: ' + eventObject.where + '<br>' + eventObject.description + '</div><div class="modal-event-add">Add +</div>';
+
+    var dateDisplay = document.createElement("div")
+	dateDisplay.classList.add("modal-left-side")
+
+	var dateDisplayMonthBar = document.createElement("div")
+	dateDisplayMonthBar.classList.add("my-event-date-month-modal")
+	dateDisplayMonthBar.innerHTML = eventObject.when.month.substring(0, 3);
+	dateDisplay.appendChild(dateDisplayMonthBar)
+
+	var dateDisplayDayBar = document.createElement("div")
+	dateDisplayDayBar.classList.add("my-event-date-day-modal")
+	dateDisplayDayBar.innerHTML = eventObject.when.day
+	dateDisplay.appendChild(dateDisplayDayBar)
+    modal_display.appendChild(dateDisplay);
+
     modal.appendChild(modal_display);
 
     Util.one(".modal-event-add").addEventListener("click", function (e) {
@@ -1098,10 +1095,10 @@ function cleanCalendarEvents() {
 }
 
 function getEventObject(event) {
-    let eventId = event.classList[1];
+    let eventParent = event.getAttribute("parent");
     for (let i = 0; i < events.length; i++) {
         let potentialEvent = events[i];
-        if (eventId == potentialEvent.id) {
+        if (eventParent == potentialEvent.when.day && currentMonth.month == potentialEvent.when.month) {
             return potentialEvent;
         }
     }
