@@ -183,7 +183,7 @@ myConnections.push(carlaGomezConnection);
 //sessionStorage.setItem("my_connections", jsonMyConnections);
 
 if (sessionStorage.getItem("my_connections") == null) {
-    var jsonMyConnections = JSON.stringify(myGroups);
+    var jsonMyConnections = JSON.stringify(myConnections);
     sessionStorage.setItem("my_connections", jsonMyConnections);
 }
 
@@ -362,8 +362,8 @@ allGroups.push(englishClubGroup)
 myGroups.push(englishClubGroup)
 myGroups.push(readingGroup)
 
-//var jsonMyGroups = JSON.stringify(myGroups);
-//sessionStorage.setItem("my_groups", jsonMyGroups);
+var jsonMyGroups = JSON.stringify(myGroups);
+sessionStorage.setItem("my_groups", jsonMyGroups);
 if (sessionStorage.getItem("my_groups") == null) {
     var jsonMyGroups = JSON.stringify(myGroups);
     sessionStorage.setItem("my_groups", jsonMyGroups);
