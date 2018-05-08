@@ -82,7 +82,13 @@ function loadMessageBoardOf(groupUID){
 	document.getElementById(activeButtonID).classList.add("activeGroupButton");
 
 	group.messages.forEach(function(message) {
-		addMessageToBoard(message, "left");
+		console.log(message)
+		if (message.from != 0) {
+			addMessageToBoard(message, "left");
+		} else {
+			addMessageToBoard(message, "right");
+		};
+		
 	})
 }
 
