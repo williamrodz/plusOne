@@ -362,8 +362,8 @@ allGroups.push(englishClubGroup)
 myGroups.push(englishClubGroup)
 myGroups.push(readingGroup)
 
-var jsonMyGroups = JSON.stringify(myGroups);
-sessionStorage.setItem("my_groups", jsonMyGroups);
+//var jsonMyGroups = JSON.stringify(myGroups);
+//sessionStorage.setItem("my_groups", jsonMyGroups);
 if (sessionStorage.getItem("my_groups") == null) {
     var jsonMyGroups = JSON.stringify(myGroups);
     sessionStorage.setItem("my_groups", jsonMyGroups);
