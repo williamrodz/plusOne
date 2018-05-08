@@ -128,7 +128,7 @@ function displayConnection(htmlConnection, current_document) {
 
 	modal_display.classList.add("modal-display-connection")
 
-	modal_display.innerHTML = '<div class="modal-title">' + connection.name + '<span class="modal-close">&times;</span></div><img class="modal-left-side" src="resources/placeholder_connection.png"/><div class="modal-right-side">Nationality: ' + nationalities + '<br>Hobbies: ' + hobbies + '</div>'
+	modal_display.innerHTML = '<div class="modal-title">' + connection.name + '<span class="modal-close">&times;</span></div><img class="modal-left-side" src=' + userImages[connection.avatar_index] + ' /><div class="modal-right-side">Nationality: ' + nationalities + '<br>Hobbies: ' + hobbies + '</div>'
 
 	modal.appendChild(modal_display)
 
