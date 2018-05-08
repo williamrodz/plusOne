@@ -179,8 +179,8 @@ myConnections.push(aliciaSmithConnection);
 myConnections.push(benChenConnection);
 myConnections.push(carlaGomezConnection);
 
-//var jsonMyConnections = JSON.stringify(myConnections);
-//sessionStorage.setItem("my_connections", jsonMyConnections);
+var jsonMyConnections = JSON.stringify(myConnections);
+sessionStorage.setItem("my_connections", jsonMyConnections);
 
 if (sessionStorage.getItem("my_connections") == null) {
     var jsonMyConnections = JSON.stringify(myConnections);
@@ -231,57 +231,607 @@ if (sessionStorage.getItem("my_messages") == null) {
 }
 
 
-var event1 = {
-    day: 1,
-    month: 4,
-    title: "English classes",
-    description: "Come learn english!",
-    location: "32-G601",
-    type: "filler",
-    start_time: "8:00AM",
-    end_time: "9:00AM",
-    uid: "C3B4D86F-F7ED-40DB-96D6-D7C3B71B65F9"
-};
-var event2 = {
-    day: 8,
-    month: 4,
-    title: "English classes",
-    description: "Come learn english!",
-    location: "32-G602",
-    type: "filler",
-    start_time: "8:00AM",
-    end_time: "9:00AM",
-    uid: "93D6D68B-B471-47E9-B50A-60B1C59DB5DC"
-};
-var event3 = {
-    day: 15,
-    month: 4,
-    title: "English classes",
-    description: "Come learn english!",
-    location: "32-G603",
-    type: "filler",
-    start_time: "8:00AM",
-    end_time: "9:00AM",
-    uid: "118D9A96-F94C-49FC-965E-9CA379BCBF9A"
-};
-var event4 = {
-    day: 22,
-    month: 4,
-    title: "English classes",
-    description: "Come learn english!",
-    location: "32-G604",
-    type: "filler",
-    start_time: "8:00AM",
-    end_time: "9:00AM",
-    uid: "F627481C-286E-43C7-BDED-5F6CBA55AEC2"
-};
+allEvents = [
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "56",
+            dayNumber: "29",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "54",
+            dayNumber: "27",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "46",
+            dayNumber: "22",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "44",
+            dayNumber: "20",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "36",
+            dayNumber: "15",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "34",
+            dayNumber: "13",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "26",
+            dayNumber: "8",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "June",
+            day: "24",
+            dayNumber: "6",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "54",
+            dayNumber: "30",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "46",
+            dayNumber: "25",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "44",
+            dayNumber: "23",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "36",
+            dayNumber: "18",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "34",
+            dayNumber: "16",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "26",
+            dayNumber: "11",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "24",
+            dayNumber: "9",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "16",
+            dayNumber: "4",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "May",
+            day: "14",
+            dayNumber: "2",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "46",
+            dayNumber: "27",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "44",
+            dayNumber: "25",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "36",
+            dayNumber: "20",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "34",
+            dayNumber: "18",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "26",
+            dayNumber: "13",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "24",
+            dayNumber: "11",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "16",
+            dayNumber: "6",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "English Class",
+        when: {
+            month: "April",
+            day: "14",
+            dayNumber: "4",
+            start: "08:00",
+            end: "09:30"
+        },
+        where: "32-141",
+        social: ["Culture"],
+        professional: [],
+        academic: ["English Classes"],
+        communityService: [],
+        description: "The Language Conversation Exchange is offering English courses for people looking to improve conversational skills."
+    },
+    {
+        name: "MFA Visit",
+        when: {
+            month: "June",
+            day: "47",
+            dayNumber: "23",
+            start: "11:00",
+            end: "13:00"
+        },
+        where: "Boston MFA",
+        social: ["Family", "Culture"],
+        professional: [],
+        academic: [],
+        communityService: [],
+        description: "Join other MIT families at the MFA and enjoy exclusive guided tours and discussions with art experts."
+    },
+    {
+        name: "MFA Visit",
+        when: {
+            month: "June",
+            day: "27",
+            dayNumber: "9",
+            start: "11:00",
+            end: "13:00"
+        },
+        where: "Boston MFA",
+        social: ["Family", "Culture"],
+        professional: [],
+        academic: [],
+        communityService: [],
+        description: "Join other MIT families at the MFA and enjoy exclusive guided tours and discussions with art experts."
+    },
+    {
+        name: "MFA Visit",
+        when: {
+            month: "May",
+            day: "27",
+            dayNumber: "12",
+            start: "11:00",
+            end: "13:00"
+        },
+        where: "Boston MFA",
+        social: ["Family", "Culture"],
+        professional: [],
+        academic: [],
+        communityService: [],
+        description: "Join other MIT families at the MFA and enjoy exclusive guided tours and discussions with art experts."
+    },
+    {
+        name: "MFA Visit",
+        when: {
+            month: "April",
+            day: "27",
+            dayNumber: "14",
+            start: "11:00",
+            end: "13:00"
+        },
+        where: "Boston MFA",
+        social: ["Family", "Culture"],
+        professional: [],
+        academic: [],
+        communityService: [],
+        description: "Join other MIT families at the MFA and enjoy exclusive guided tours and discussions with art experts."
+    },
+    {
+        name: "Career Fair",
+        when: {
+            month: "April",
+            day: "22",
+            dayNumber: "9",
+            start: "09:00",
+            end: "11:00"
+        },
+        where: "GECD",
+        social: [],
+        professional: ["Job Search"],
+        academic: [],
+        communityService: [],
+        description: "GECD is hosting a career fair for MIT spouses and partners, come to meet employers and learn about available opportunities."
+    },
+    {
+        name: "E-Crash Course",
+        when: {
+           month: "May",
+           day: "34", 
+           dayNumber: "16",
+           start: "14:00",
+           end: "16:00"
+           },
+        where: "MIT Martin Trust Center",
+        social: [],
+        professional: ["Career Development"],
+        academic: [],
+        communityService: [],
+        description: "Learn about how to start a new venture from the experts at the Martin Trust Center."
+    }, 
+    {
+        name: "Innovation Fair",
+        when: {
+           month: "May",
+           day: "42", 
+           dayNumber: "21",
+           start: "16:00",
+           end: "18:00"
+           },
+        where: "MIT Kresge Oval",
+        social: [],
+        professional: ["Career Development", "Job Search"],
+        academic: [],
+        communityService: [],
+        description: "Come see what MIT Entrepreneurs have been up to this semester and look for potential employers."
+    }, 
+    {
+        name: "Math Tutoring",
+        when: {
+           month: "May",
+           day: "22", 
+           dayNumber: "7",
+           start: "10:00",
+           end: "11:00"
+           },
+        where: "W20-211",
+        social: [],
+        professional: [],
+        academic: [],
+        communityService: ["Tutoring"],
+        description: "Help middle school students with their math homework."
+    }, 
+    {
+        name: "Math Tutoring",
+        when: {
+           month: "May",
+           day: "32", 
+           dayNumber: "14",
+           start: "10:00",
+           end: "11:00"
+           },
+        where: "W20-211",
+        social: [],
+        professional: [],
+        academic: [],
+        communityService: ["Tutoring"],
+        description: "Help middle school students with their math homework."
+    }, 
+    {
+        name: "Math Tutoring",
+        when: {
+           month: "April",
+           day: "52",
+           dayNumber: "30", 
+           start: "10:00",
+           end: "11:00"
+           },
+        where: "W20-211",
+        social: [],
+        professional: [],
+        academic: [],
+        communityService: ["Tutoring"],
+        description: "Help middle school students with their math homework."
+    }, 
+    {
+        name: "Math Tutoring",
+        when: {
+           month: "June",
+           day: "22",
+           dayNumber: "4", 
+           start: "10:00",
+           end: "11:00"
+           },
+        where: "W20-211",
+        social: [],
+        professional: [],
+        academic: [],
+        communityService: ["Tutoring"],
+        description: "Help middle school students with their math homework."
+    }, 
+    {
+        name: "Math Tutoring",
+        when: {
+           month: "June",
+           day: "32", 
+           dayNumber: "11",
+           start: "10:00",
+           end: "11:00"
+           },
+        where: "W20-211",
+        social: [],
+        professional: [],
+        academic: [],
+        communityService: ["Tutoring"],
+        description: "Help middle school students with their math homework."
+    }, 
+]
 
-myEvents.push(event1);
-myEvents.push(event2);
-myEvents.push(event3);
-myEvents.push(event4);
-//var jsonMyEvents = JSON.stringify(myEvents);
-//sessionStorage.setItem("my_events", jsonMyEvents);
+myEvents.push(allEvents[0]);
+myEvents.push(allEvents[3]);
+myEvents.push(allEvents[5]);
+myEvents.push(allEvents[7]);
+var jsonMyEvents = JSON.stringify(myEvents);
+sessionStorage.setItem("my_events", jsonMyEvents);
 if (sessionStorage.getItem("my_events") == null) {
     var jsonMyEvents = JSON.stringify(myEvents);
     sessionStorage.setItem("my_events", jsonMyEvents);
