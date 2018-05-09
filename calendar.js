@@ -188,7 +188,14 @@ function displayEventModal(event, current_document) {
 
     var eventAdded = eventAlreadyAdded(event.id)
 
-    modal_display.innerHTML = '<div class="modal-title">' + eventObject.name + '<span class="modal-close">×</span></div><div class="modal-right-side-event">' + 'Time: ' + eventObject.when.start + ' - ' + eventObject.when.end + '<br>' + 'Location: ' + eventObject.where + '<br>' + eventObject.description + '</div><div class="modal-event-add">Add +</div>';
+    modal_display.innerHTML = '<div class="modal-title">' + eventObject.name + '<span class="modal-close">×</span></div><div class="modal-right-side-event">' + 'Time: ' + eventObject.when.start + ' - ' + eventObject.when.end + '<br>' + 'Location: ' + eventObject.where + '<br>' + eventObject.description + '</div>';
+
+    if (eventAdded) {
+        modal_display.innerHTML += '<div class="modal-event-added">Added</div>';
+    }
+    else {
+        modal_display.innerHTML += '<div class="modal-event-add">Add +</div>';
+    }
 
     var dateDisplay = document.createElement("div")
 	dateDisplay.classList.add("modal-left-side")
@@ -206,31 +213,26 @@ function displayEventModal(event, current_document) {
 
     modal.appendChild(modal_display);
 
-    Util.one(".modal-event-add").addEventListener("click", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        Util.one("#modal").style.display = "none";
-        if (currentEvent != null) {
-            var event = getEventFromHTMLEvent(currentEvent);
-            var events = JSON.parse(sessionStorage.getItem("my_events"));
-            events.push(event);
-            sessionStorage.setItem("my_events", JSON.stringify(events));
-        }
-    });
-
     Util.one(".modal-close").addEventListener("click", function (e) {
+        console.log("here");
         e.preventDefault()
         e.stopPropagation()
         Util.one("#modal").style.display = "none";
     });
 
-    Util.one(".modal-event-add").addEventListener("click", function (e) {
-        //Change add button to Added
-        e.classList.remove("modal-event-add");
-        e.classList.add("modal-event-added");
-        e.innerHTML = "Added";
-    });
-
+    if (!eventAdded) {
+        Util.one(".modal-event-add").addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            Util.one("#modal").style.display = "none";
+            if (currentEvent != null) {
+                var event = getEventFromHTMLEvent(currentEvent);
+                var events = JSON.parse(sessionStorage.getItem("my_events"));
+                events.push(event);
+                sessionStorage.setItem("my_events", JSON.stringify(events));
+            }
+        });
+    }
 }
 
 /**
@@ -253,7 +255,7 @@ function updateArray(isChecked, element, array) {
 
 /**
  * Returns the selected element
- * @param {*} selector {String}
+ * @param {String} selector {String}
  */
 function get(selector) {
     return document.querySelector(selector);
@@ -486,8 +488,8 @@ function clearArrayFilters() {
 /**
  * Returns the index of element inside array if it exists.
  * Otherwise, it returns -1.
- * @param {*} element {String}
- * @param {*} array []
+ * @param {String} element
+ * @param {*} array
  */
 function indexOfElementInArray(element, array) {
     return array.indexOf(element);
@@ -499,7 +501,6 @@ function exists(item, array) {
 
 function cleanCalendarEvents() {
     var calendarDates = document.getElementsByClassName("event");
-    //for (let i = 0; i < calendarDates.length; i++) {
     let numElements = calendarDates.length;
     for (let i = numElements-1; i >= 0; i--) {
         let event = calendarDates[i];
