@@ -219,6 +219,16 @@ function displayGroup(htmlGroup, current_document) {
 function removeEvent(event) {
 	var events = Util.one("#my-events");
 	events.children[1].removeChild(event)
+	var uid = event.id
+	var myEvents = JSON.parse(sessionStorage.getItem("my_events"));
+	var newEvents = []
+	for (var index = 0; index < myEvents.length; index ++) {
+		var event = myEvents[index]
+		if (event.uid != uid) {
+			newEvents.push(event)
+		}
+	}
+	sessionStorage.setItem("my_events", JSON.stringify(newEvents))
 }
 
 function addMessageToDisplay(message) {
