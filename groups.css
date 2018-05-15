@@ -52,12 +52,15 @@
 #messageBoard{
     overflow:scroll;
     height:400px;
+    background-color: white;
 
 }
 
 .sendMessageBar{
     display: flex;
     flex-direction: row;
+    background-color: white;
+    padding-bottom: 10px;
 }
 
 .inputField{

@@ -81,18 +81,41 @@ function loadMessageBoardOf(groupUID){
 	activeButtonID = group.uid;
 	document.getElementById(activeButtonID).classList.add("activeGroupButton");
 
+	addedMessages = 0
 	group.messages.forEach(function(message) {
 		console.log(message)
+		addedMessages +=1
 		if (message.from != 0) {
 			addMessageToBoard(message, "left");
 		} else {
 			addMessageToBoard(message, "right");
 		};
 		
-	})
+	});
+	if (addedMessages == 0){
+		addEmptyMessageBoardDefaultText();
+	}
+}
+
+function addEmptyMessageBoardDefaultText(){
+	var div = document.createElement("div");
+	div.setAttribute("id","noMessagesDefaultText");
+	div.innerHTML = "Write a message below to begin the conversation for this group!"
+"Write a message below to begin the conversation for this group!";
+
+	document.getElementById("messageBoard").appendChild(div);
+}
+
+function removeEmptyMessageBoardDefaultText(){
+	var defaultText = document.getElementById("noMessagesDefaultText");
+	if (defaultText != null){
+		document.getElementById("noMessagesDefaultText").remove();
+	}
+	
 }
 
 function submitNewMessage(){
+	removeEmptyMessageBoardDefaultText();
 	var messageText = document.getElementById("inputField").value;
 	var message = {from: 0, content: messageText}
 	if (messageText.length > 0){
