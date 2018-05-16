@@ -396,7 +396,7 @@ body {
     grid-column: 2;
     grid-row: 1;
     font-family: Helvetica, Georgia, 'Times New Roman';
-    font-size: 15px;
+    /*font-size: 15px;*/
     font-weight: bold;
     width: 20px;
     height: 20px;
