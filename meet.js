@@ -746,6 +746,7 @@ function clearArrayFilters() {
     languageFilter = [];
     hobbyFilter = [];
     professionalIntsFilter = [];
+    
 }
 
 /**
